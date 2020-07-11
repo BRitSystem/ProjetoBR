@@ -1,180 +1,180 @@
-﻿<nav class="navbar navbar-header navbar-expand-lg">
-    <div class="container-fluid">
-        <div class="collapse" id="search-nav">
-            <form class="navbar-left navbar-form nav-search mr-md-3">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button type="submit" class="btn btn-search pr-1">
-                            <i class="fa fa-search search-icon"></i>
-                        </button>
-                    </div>
-                    <input type="text" placeholder="Search ..." class="form-control">
-                </div>
-            </form>
+﻿<div class="navbar">
+    <ul class="nav navbar-nav navbar-right pull-right">
+        <li class="visible-phone-landscape">
+            <a href="#" id="search-toggle">
+                <i class="fa fa-search"></i>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a href="#" title="Messages" id="messages"
+               class="dropdown-toggle"
+               data-toggle="dropdown">
+                <i class="glyphicon glyphicon-comment"></i>
+            </a>
+            <ul id="messages-menu" class="dropdown-menu messages" role="menu">
+                <li role="presentation">
+                    <a href="#" class="message">
+                        <img src="~/Content/img/1.png" alt="">
+                        <div class="details">
+                            <div class="sender">Jane Hew</div>
+                            <div class="text">
+                                Hey, John! How is it going? ...
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="message">
+                        <img src="~/Content/img/2.png" alt="">
+                        <div class="details">
+                            <div class="sender">Alies Rumiancaŭ</div>
+                            <div class="text">
+                                I'll definitely buy this template
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="message">
+                        <img src="~/Content/img/3.png" alt="">
+                        <div class="details">
+                            <div class="sender">Michał Rumiancaŭ</div>
+                            <div class="text">
+                                Is it really Lore ipsum? Lore ...
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="text-align-center see-all">
+                        See all messages <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" title="8 support tickets"
+               class="dropdown-toggle"
+               data-toggle="dropdown">
+                <i class="glyphicon glyphicon-globe"></i>
+                <span class="count">8</span>
+            </a>
+            <ul id="support-menu" class="dropdown-menu support" role="menu">
+                <li role="presentation">
+                    <a href="#" class="support-ticket">
+                        <div class="picture">
+                            <span class="label label-important"><i class="fa fa-bell-o"></i></span>
+                        </div>
+                        <div class="details">
+                            Check out this awesome ticket
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="support-ticket">
+                        <div class="picture">
+                            <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
+                        </div>
+                        <div class="details">
+                            "What is the best way to get ...
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="support-ticket">
+                        <div class="picture">
+                            <span class="label label-success"><i class="fa fa-tag"></i></span>
+                        </div>
+                        <div class="details">
+                            This is just a simple notification
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="support-ticket">
+                        <div class="picture">
+                            <span class="label label-info"><i class="fa fa-info-circle"></i></span>
+                        </div>
+                        <div class="details">
+                            12 new orders has arrived today
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="support-ticket">
+                        <div class="picture">
+                            <span class="label label-important"><i class="fa fa-plus"></i></span>
+                        </div>
+                        <div class="details">
+                            One more thing that just happened
+                        </div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="text-align-center see-all">
+                        See all tickets <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="divider"></li>
+        <li class="hidden-xs">
+            <a href="#" id="settings"
+               title="Settings"
+               data-toggle="popover"
+               data-placement="bottom">
+                <i class="glyphicon glyphicon-cog"></i>
+            </a>
+        </li>
+        <li class="hidden-xs dropdown">
+            <a href="#" title="Account" id="account"
+               class="dropdown-toggle"
+               data-toggle="dropdown">
+                <i class="glyphicon glyphicon-user"></i>
+            </a>
+            <ul id="account-menu" class="dropdown-menu account" role="menu">
+                <li role="presentation" class="account-picture">
+                    <img src="~/Content/img/2.png" alt="">
+                    Philip Daineka
+                </li>
+                <li role="presentation">
+                    <a href="form_account.html" class="link">
+                        <i class="fa fa-user"></i>
+                        Profile
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="component_calendar.html" class="link">
+                        <i class="fa fa-calendar"></i>
+                        Calendar
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" class="link">
+                        <i class="fa fa-inbox"></i>
+                        Inbox
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="visible-xs">
+            <a href="#"
+               class="btn-navbar"
+               data-toggle="collapse"
+               data-target=".sidebar"
+               title="">
+                <i class="fa fa-bars"></i>
+            </a>
+        </li>
+        <li class="hidden-xs"><a href="login.html"><i class="glyphicon glyphicon-off"></i></a></li>
+    </ul>
+    <form id="search-form" class="navbar-form pull-right" role="search">
+        <input type="search" class="form-control search-query" placeholder="Search...">
+    </form>
+    @*<div class="notifications pull-right">
+        <div class="alert pull-right">
+            <a href="#" class="close ml-xs" data-dismiss="alert">&times;</a>
+            <i class="fa fa-info-circle mr-xs"></i> Check out Light Blue <a id="notification-link" href="#">settings</a> on the right!
         </div>
-        <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-            <li class="nav-item toggle-nav-search hidden-caret">
-                <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
-                    <i class="fa fa-search"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown hidden-caret">
-                <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-envelope"></i>
-                </a>
-                <ul class="dropdown-menu messages-notif-box animated fadeIn" aria-labelledby="messageDropdown">
-                    <li>
-                        <div class="dropdown-title d-flex justify-content-between align-items-center">
-                            Messages
-                            <a href="#" class="small">Mark all as read</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="message-notif-scroll scrollbar-outer">
-                            <div class="notif-center">
-                                <a href="#">
-                                    <div class="notif-img">
-                                        <img src="~/Content/assets/img/jm_denis.jpg" alt="Img Profile">
-                                    </div>
-                                    <div class="notif-content">
-                                        <span class="subject">Jimmy Denis</span>
-                                        <span class="block">
-                                            How are you ?
-                                        </span>
-                                        <span class="time">5 minutes ago</span>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="notif-img">
-                                        <img src="~/Content/assets/img/chadengle.jpg" alt="Img Profile">
-                                    </div>
-                                    <div class="notif-content">
-                                        <span class="subject">Chad</span>
-                                        <span class="block">
-                                            Ok, Thanks !
-                                        </span>
-                                        <span class="time">12 minutes ago</span>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="notif-img">
-                                        <img src="~/Content/assets/img/mlane.jpg" alt="Img Profile">
-                                    </div>
-                                    <div class="notif-content">
-                                        <span class="subject">Jhon Doe</span>
-                                        <span class="block">
-                                            Ready for the meeting today...
-                                        </span>
-                                        <span class="time">12 minutes ago</span>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="notif-img">
-                                        <img src="~/Content/assets/img/talha.jpg" alt="Img Profile">
-                                    </div>
-                                    <div class="notif-content">
-                                        <span class="subject">Talha</span>
-                                        <span class="block">
-                                            Hi, Apa Kabar ?
-                                        </span>
-                                        <span class="time">17 minutes ago</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="see-all" href="javascript:void(0);">See all messages<i class="fa fa-angle-right"></i> </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown hidden-caret">
-                <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-bell"></i>
-                    <span class="notification">4</span>
-                </a>
-                <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
-                    <li>
-                        <div class="dropdown-title">You have 4 new notification</div>
-                    </li>
-                    <li>
-                        <div class="notif-scroll scrollbar-outer">
-                            <div class="notif-center">
-                                <a href="#">
-                                    <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
-                                    <div class="notif-content">
-                                        <span class="block">
-                                            New user registered
-                                        </span>
-                                        <span class="time">5 minutes ago</span>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="notif-icon notif-success"> <i class="fa fa-comment"></i> </div>
-                                    <div class="notif-content">
-                                        <span class="block">
-                                            Rahmad commented on Admin
-                                        </span>
-                                        <span class="time">12 minutes ago</span>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="notif-img">
-                                        <img src="~/Content/assets/img/profile2.jpg" alt="Img Profile">
-                                    </div>
-                                    <div class="notif-content">
-                                        <span class="block">
-                                            Reza send messages to you
-                                        </span>
-                                        <span class="time">12 minutes ago</span>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="notif-icon notif-danger"> <i class="fa fa-heart"></i> </div>
-                                    <div class="notif-content">
-                                        <span class="block">
-                                            Farrah liked Admin
-                                        </span>
-                                        <span class="time">17 minutes ago</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown hidden-caret">
-                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <div class="avatar-sm">
-                        <img src="~/Content/assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-                    </div>
-                </a>
-                <ul class="dropdown-menu dropdown-user animated fadeIn">
-                    <li>
-                        <div class="user-box">
-                            <div class="avatar-lg"><img src="~/Content/assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
-                            <div class="u-text">
-                                <h4>Hizrian</h4>
-                                <p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="#">My Balance</a>
-                        <a class="dropdown-item" href="#">Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Account Setting</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-    </div>
-</nav>
+    </div>*@
+</div>
