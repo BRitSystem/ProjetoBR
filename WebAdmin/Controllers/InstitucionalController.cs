@@ -14,10 +14,10 @@ namespace WebAdmin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(string titulo, string descricao, string RTEConteudo)
+        public IActionResult UpdateInstitucional(string titulo, string descricao, string mytextarea)
         {
-            ViewBag.Name = string.Format("Name: {0} {1}", titulo, descricao, RTEConteudo);
-            return View();
+
+            return RedirectToAction("Index");
         }
     }
 }
