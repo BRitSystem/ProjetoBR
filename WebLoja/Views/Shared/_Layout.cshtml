@@ -4,9 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link rel="apple-touch-icon" sizes="57x57" href="~/~/assets/images/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="~/~/assets/images/favicons/apple-icon-60x60.png">
+    <!--
+    Document Title
+    =============================================
+    -->
+    <title>Titan | Multipurpose HTML5 Template</title>
+    <!--
+    Favicons
+    =============================================
+    -->
+    <link rel="apple-touch-icon" sizes="57x57" href="~/assets/images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/assets/images/favicons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="~/assets/images/favicons/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="~/assets/images/favicons/apple-icon-76x76.png">
     <link rel="apple-touch-icon" sizes="114x114" href="~/assets/images/favicons/apple-icon-114x114.png">
@@ -22,7 +30,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="~/assets/images/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <!--
+    Stylesheets
+    =============================================
+
+    -->
+    <!-- Default stylesheets-->
     <link href="~/assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template specific stylesheets-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
@@ -43,74 +58,145 @@
         <div class="page-loader">
             <div class="loader">Loading...</div>
         </div>
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation
-                            </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" 
-                            href="index.html">Terreiro Pai de Aruanda</a>
+                    @*<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html">Ateliê Mágico</a>*@
                 </div>
                 <div class="collapse navbar-collapse" id="custom-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Home</a>
                             <ul class="dropdown-menu">
-                                <li><a href="index_mp_fullscreen_video_background.html">Contato</a></li>
+                                <li><a href="index_mp_fullscreen_video_background.html">Default</a></li>
+                                <li><a href="index_op_fullscreen_gradient_overlay.html">One Page</a></li>
+                                <li><a href="index_agency.html">Agency</a></li>
+                                <li><a href="index_portfolio.html">Portfolio</a></li>
+                                <li><a href="index_restaurant.html">Restaurant</a></li>
+                                <li><a href="index_finance.html">Finance</a></li>
+                                <li><a href="index_landing.html">Landing Page</a></li>
+                                <li><a href="index_photography.html">Photography</a></li>
+                                <li><a href="index_shop.html">Shop</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <section class="home-section home-parallax home-fade bg-dark-30" id="home" data-background="https://i.ytimg.com/vi/Z4ls0-ZGnU4/maxresdefault.jpg">
+            <div class="titan-caption">
+                <div class="caption-content">
+                    <div class="font-alt mb-30 titan-title-size-1">Bem vindo</div>
+                    <div class="font-alt mb-40 titan-title-size-4">Ateliê Mágico</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Sobre</a>
+                </div>
+            </div>
+        </section>
         <div class="main">
-            <section class="module bg-dark-60 shop-page-header" data-background="assets/images/shop/maconaria.jpg">
+            @RenderBody()
+            <hr class="divider-w">
+            <div class="module-small bg-dark">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <h2 class="module-title font-alt">Produtos Selecionados</h2>
-                            <div class="module-subtitle font-serif">Sempre perto de você, agora online.</div>
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2">
+                            <div class="callout-text font-alt">
+                                <h3 class="callout-title">Novidades</h3>
+                                <p>Receba nossas novidades no seu email.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="callout-btn-box">
+                                <form id="subscription-form" role="form" method="post" action="php/subscribe.php">
+                                    <div class="input-group">
+                                        <input class="form-control" type="email" id="semail" name="semail" placeholder="E-mail" data-validation-required-message="Por favor informe o seu e-mail." required="required" /><span class="input-group-btn">
+                                            <button class="btn btn-g btn-round" id="subscription-form-submit" type="submit">Enviar</button>
+                                        </span>
+                                    </div>
+                                </form>
+                                <div class="text-center" id="subscription-response"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            @*<section class="module-small">
-                <div class="container">
-                    <form class="row">
-                        <div class="col-sm-4 mb-sm-20">
-                            <select class="form-control">
-                                <option selected="selected">Default Sorting</option>
-                                <option>Popular</option>
-                                <option>Latest</option>
-                                <option>Average Price</option>
-                                <option>High Price</option>
-                                <option>Low Price</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-2 mb-sm-20">
-                            <select class="form-control">
-                                <option selected="selected">Woman</option>
-                                <option>Man</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3 mb-sm-20">
-                            <select class="form-control">
-                                <option selected="selected">All</option>
-                                <option>Coats</option>
-                                <option>Jackets</option>
-                                <option>Dresses</option>
-                                <option>Jumpsuits</option>
-                                <option>Tops</option>
-                                <option>Trousers</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <button class="btn btn-block btn-round btn-g" type="submit">Apply</button>
-                        </div>
-                    </form>
+            </div>
+            <hr class="divider-d">
+            <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="https://i.ytimg.com/vi/Z4ls0-ZGnU4/maxresdefault.jpg">
+                <div class="testimonials-slider pt-140 pb-140">
+                    <ul class="slides">
+                        <li>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="module-icon"><span class="icon-quote"></span></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <blockquote class="testimonial-text font-alt">Sempre fui bem atendido por está loja.</blockquote>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <div class="testimonial-author">
+                                            <div class="testimonial-caption font-alt">
+                                                <div class="testimonial-title">Jack Woods</div>
+                                                <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </li>
+                        <li>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="module-icon"><span class="icon-quote"></span></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <blockquote class="testimonial-text font-alt">Loja nota 10!</blockquote>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <div class="testimonial-author">
+                                            <div class="testimonial-caption font-alt">
+                                                <div class="testimonial-title">Jim Stone</div>
+                                                <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </li>
+                        <li>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="module-icon"><span class="icon-quote"></span></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <blockquote class="testimonial-text font-alt">Estou feliz por ser atendido por vocês.</blockquote>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <div class="testimonial-author">
+                                            <div class="testimonial-caption font-alt">
+                                                <div class="testimonial-title">Adele Snow</div>
+                                                <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </section>*@
-            <hr class="divider-w">
-            @RenderBody();
+            </section>
             <div class="module-small bg-dark">
                 <div class="container">
                     <div class="row">
@@ -122,6 +208,51 @@
                                 <p>Email:<a href="#">somecompany@example.com</a></p>
                             </div>
                         </div>
+                        @*<div class="col-sm-3">
+                            <div class="widget">
+                                <h5 class="widget-title font-alt">Recent Comments</h5>
+                                <ul class="icon-list">
+                                    <li>Maria on <a href="#">Designer Desk Essentials</a></li>
+                                    <li>John on <a href="#">Realistic Business Card Mockup</a></li>
+                                    <li>Andy on <a href="#">Eco bag Mockup</a></li>
+                                    <li>Jack on <a href="#">Bottle Mockup</a></li>
+                                    <li>Mark on <a href="#">Our trip to the Alps</a></li>
+                                </ul>
+                            </div>
+                        </div>*@
+                        @*<div class="col-sm-3">
+                            <div class="widget">
+                                <h5 class="widget-title font-alt">Blog Categories</h5>
+                                <ul class="icon-list">
+                                    <li><a href="#">Photography - 7</a></li>
+                                    <li><a href="#">Web Design - 3</a></li>
+                                    <li><a href="#">Illustration - 12</a></li>
+                                    <li><a href="#">Marketing - 1</a></li>
+                                    <li><a href="#">Wordpress - 16</a></li>
+                                </ul>
+                            </div>
+                        </div>*@
+                        @*<div class="col-sm-3">
+                            <div class="widget">
+                                <h5 class="widget-title font-alt">Popular Posts</h5>
+                                <ul class="widget-posts">
+                                    <li class="clearfix">
+                                        <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-1.jpg" alt="Post Thumbnail" /></a></div>
+                                        <div class="widget-posts-body">
+                                            <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
+                                            <div class="widget-posts-meta">23 january</div>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <div class="widget-posts-image"><a href="#"><img src="~/assets/images/rp-2.jpg" alt="Post Thumbnail" /></a></div>
+                                        <div class="widget-posts-body">
+                                            <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
+                                            <div class="widget-posts-meta">15 February</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

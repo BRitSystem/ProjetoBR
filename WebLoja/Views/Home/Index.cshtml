@@ -5,6 +5,7 @@
 }
 
 <form>
+    <hr class="divider-w">
     <section class="module-small">
         <div class="container">
             <div class="row multi-columns-row">
@@ -14,12 +15,12 @@
                         <div class="shop-item">
                             <div class="shop-item-image">
                                 <img src="@produto.ProdutoFoto" alt="Accessories Pack" />
-                                <div class="shop-item-detail"><a asp-controller="PreCarrinho" asp-action="Informacoes" asp-route-id="@produto.ProdutoId" class="btn btn-primary">Informações</a></div>
+                                <div class="shop-item-detail"><a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn btn-block btn-round btn-b"><i class="fa fa-shopping-cart"></i> Detalhes</a></div>
                             </div>
-                            <h4 class="shop-item-title font-alt"><a href='#'>@produto.ProdutoNome</a></h4>R$@produto.ProdutoValor                            
+                            <h4 class="shop-item-title font-alt"><a href='#'>@produto.ProdutoNome</a></h4>R$@produto.ProdutoValor
                         </div>
                     </div>
-                    
+
                 }
             </div>
         </div>

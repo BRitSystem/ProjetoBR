@@ -1,21 +1,22 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model WebLoja.Models.Produto
+@{
+    ViewData["Title"] = "Detalhes";
 }
 <section class="module-small">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 mb-sm-40">
-                <a class="gallery" href="~/assets/images/shop/product-7.jpg"><img src="~/assets/images/shop/product-7.jpg" alt="Single Product Image" /></a>
+                <a class="gallery" href="@Model.ProdutoFoto"><img src="@Model.ProdutoFoto" alt="Single Product Image" /></a>
                 @*<ul class="product-gallery">
-                    <li><a class="gallery" href="~/assets/images/shop/product-8.jpg"></a><img src="~/assets/images/shop/product-8.jpg" alt="Single Product" /></li>
-                    <li><a class="gallery" href="~/assets/images/shop/product-9.jpg"></a><img src="~/assets/images/shop/product-9.jpg" alt="Single Product" /></li>
-                    <li><a class="gallery" href="~/assets/images/shop/product-10.jpg"></a><img src="~/assets/images/shop/product-10.jpg" alt="Single Product" /></li>
-                </ul>*@
+                        <li><a class="gallery" href="~/assets/images/shop/product-8.jpg"></a><img src="~/assets/images/shop/product-8.jpg" alt="Single Product" /></li>
+                        <li><a class="gallery" href="~/assets/images/shop/product-9.jpg"></a><img src="~/assets/images/shop/product-9.jpg" alt="Single Product" /></li>
+                        <li><a class="gallery" href="~/assets/images/shop/product-10.jpg"></a><img src="~/assets/images/shop/product-10.jpg" alt="Single Product" /></li>
+                    </ul>*@
             </div>
             <div class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1 class="product-title font-alt">Accessories Pack</h1>
+                        <h1 class="product-title font-alt">@Model.ProdutoNome</h1>
                     </div>
                 </div>
                 <div class="row mb-20">
@@ -25,7 +26,7 @@
                 </div>
                 <div class="row mb-20">
                     <div class="col-sm-12">
-                        <div class="price font-alt"><span class="amount">£20.00</span></div>
+                        <div class="price font-alt"><span class="amount">R$ @Model.ProdutoValor</span></div>
                     </div>
                 </div>
                 <div class="row mb-20">
@@ -41,13 +42,13 @@
                     </div>
                     <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b" href="#">Add To Cart</a></div>
                 </div>
-                <div class="row mb-20">
-                    <div class="col-sm-12">
-                        <div class="product_meta">
-                            Categories:<a href="#"> Man, </a><a href="#">Clothing, </a><a href="#">T-shirts</a>
+                @*<div class="row mb-20">
+                        <div class="col-sm-12">
+                            <div class="product_meta">
+                                Categories:<a href="#"> Man, </a><a href="#">Clothing, </a><a href="#">T-shirts</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div>*@
             </div>
         </div>
     </div>
