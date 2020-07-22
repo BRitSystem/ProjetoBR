@@ -3,8 +3,61 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+<section class="home-section bg-dark-30" id="home" data-background="https://image.freepik.com/free-photo/black-metal-background-texture_88281-3955.jpg">
+    <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=LCmsrVOXzZc', containment:'.home-section', startAt:56, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0}"></div>
+    <div class="video-controls-box">
+        <div class="container">
+            <div class="video-controls">@*<a class="fa fa-volume-up" id="video-volume" href="#">&nbsp;</a><a class="fa fa-pause" id="video-play" href="#">&nbsp;</a>*@</div>
+        </div>
+    </div>
+    <div class="titan-caption">
+        <div class="caption-content">
+            <div class="font-alt mb-30 titan-title-size-1">Hello &amp; welcome</div>
+            <div class="font-alt mb-40 titan-title-size-4">We are Titan</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Learn More</a>
+        </div>
+    </div>
+</section>
 <form>
+    <section class="module-small bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">Conheça nossos produtos</h2>
+                    <div class="module-subtitle font-serif">Produtos exclusivos especialmente para você</div>
+                </div>
+                <div class="col-sm-4 mb-sm-20">
+                    <select class="form-control">
+                        <option selected="selected">Default Sorting</option>
+                        <option>Popular</option>
+                        <option>Latest</option>
+                        <option>Average Price</option>
+                        <option>High Price</option>
+                        <option>Low Price</option>
+                    </select>
+                </div>
+                <div class="col-sm-2 mb-sm-20">
+                    <select class="form-control">
+                        <option selected="selected">Woman</option>
+                        <option>Man</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 mb-sm-20">
+                    <select class="form-control">
+                        <option selected="selected">All</option>
+                        <option>Coats</option>
+                        <option>Jackets</option>
+                        <option>Dresses</option>
+                        <option>Jumpsuits</option>
+                        <option>Tops</option>
+                        <option>Trousers</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-block btn-round btn-g" type="submit">Pesquisar</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <hr class="divider-w">
     <section class="module-small">
         <div class="container">
@@ -15,17 +68,69 @@
                         <div class="shop-item">
                             <div class="shop-item-image">
                                 <img src="@produto.ProdutoFoto" alt="Accessories Pack" />
-                                <div class="shop-item-detail"><a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn btn-block btn-round btn-b"><i class="fa fa-shopping-cart"></i> Detalhes</a></div>
+                                <div class="shop-item-detail"><a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn-border-d btn-circle"><i class="fa fa-search"></i> Detalhes</a></div>
                             </div>
                             <h4 class="shop-item-title font-alt"><a href='#'>@produto.ProdutoNome</a></h4>R$@produto.ProdutoValor
                         </div>
+                        <div style="display: flex; justify-content: center; align-items: center;"><button class="btn btn-success btn-circle" type="button"><i class="fa fa-shopping-cart"></i> Comprar</button></div>
                     </div>
-
                 }
             </div>
         </div>
     </section>
+    <hr class="divider-w">
+    <section class="module">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt">Categorias</h2>
+                    <div class="module-subtitle font-serif">Categorias selecionadas especialmente para você</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="owl-carousel text-center" data-items="5" data-pagination="false" data-navigation="false">
+                    <div class="owl-item">
+                        <div class="col-sm-12">
+                            <div class="ex-product">
+                                <a href="#"><img src="~/assets/images/tintas_home_2020.jpg" alt="Leather belt" /></a>
+                                <h4 class="shop-item-title font-alt"><a href="#">Tintas</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="col-sm-12">
+                            <div class="ex-product">
+                                <a href="#"><img src="~/assets/images/eva_home_2020.jpg" alt="Derby shoes" /></a>
+                                <h4 class="shop-item-title font-alt"><a href="#">Evas</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="col-sm-12">
+                            <div class="ex-product">
+                                <a href="#"><img src="~/assets/images/decoupage_home_2020.jpg" alt="Leather belt" /></a>
+                                <h4 class="shop-item-title font-alt"><a href="#">Decoupage</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="col-sm-12">
+                            <div class="ex-product">
+                                <a href="#"><img src="~/assets/images/ferramentas_home_2020.jpg" alt="Leather belt" /></a>
+                                <h4 class="shop-item-title font-alt"><a href="#">Ferramentas</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item">
+                        <div class="col-sm-12">
+                            <div class="ex-product">
+                                <a href="#"><img src="~/assets/images/pinceis_home_2020.jpg" alt="Chelsea boots" /></a>
+                                <h4 class="shop-item-title font-alt"><a href="#">Pincéis</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </form>
-@*@Url.Action("Informacoes", "PreCarrinho", new { id = @produto.ProdutoId })*@
-
-@*<a class="btn btn-round btn-b"><span class="icon-basket">Informações</span></a>*@
