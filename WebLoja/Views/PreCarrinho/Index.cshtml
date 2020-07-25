@@ -4,7 +4,7 @@
 }
 <link href="~/assets/css/jquery.mb.YTPlayer.min.css" />
 <section class="home-section bg-dark-30" id="home" data-background="https://image.freepik.com/free-photo/black-metal-background-texture_88281-3955.jpg">
-    <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=bAIs6DMQ4Jc', containment:'.home-section', startAt:0, mute:true, autoPlay:true, loop:true, opacity:5, showControls:false, showYTLogo:false, vol:0}"></div>
+    <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=LCmsrVOXzZc', containment:'.home-section', startAt:56, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0}"></div>
     <div class="video-controls-box">
         <div class="container">
             <div class="video-controls">@*<a class="fa fa-volume-up" id="video-volume" href="#">&nbsp;</a><a class="fa fa-pause" id="video-play" href="#">&nbsp;</a>*@</div>
@@ -34,11 +34,11 @@
                         <h1 class="product-title font-alt">@Model.ProdutoNome</h1>
                     </div>
                 </div>
-                <div class="row mb-20">
+                @*<div class="row mb-20">
                     <div class="col-sm-12">
                         <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span><a class="open-tab section-scroll" href="#reviews">-2customer reviews</a>
                     </div>
-                </div>
+                </div>*@
                 <div class="row mb-20">
                     <div class="col-sm-12">
                         <div class="price font-alt"><span class="amount">R$ @Model.ProdutoValor</span></div>
@@ -52,10 +52,10 @@
                     </div>
                 </div>
                 <div class="row mb-20">
-                    <div class="col-sm-4 mb-sm-20">
+                    @*<div class="col-sm-4 mb-sm-20">
                         <input class="form-control input-lg" type="number" name="" value="1" max="40" min="1" required="required" />
-                    </div>
-                    <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b" href="#">Add To Cart</a></div>
+                    </div>*@
+                    <div class="col-sm-6"><a asp-controller="Carrinho" asp-action="Index" asp-route-id="@Model.ProdutoId" class="btn btn-lg btn-block btn-round btn-b">Adicionar ao Carrinho</a></div>
                 </div>
                 @*<div class="row mb-20">
             <div class="col-sm-12">
