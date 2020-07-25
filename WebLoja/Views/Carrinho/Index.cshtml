@@ -37,7 +37,7 @@
                                 <th>Preço</th>
                                 <th>Quantidade</th>
                                 <th>Total do Item</th>
-                                <th></th>
+                                <th>Remover</th>
                             </tr>
                             <tr>
                                 <td class="hidden-xs"><a href="#"><img src="@item.ProdutoFoto" alt="@item.ProdutoNome" /></a></td>
@@ -121,7 +121,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-lg btn-block btn-round btn-d" type="submit">Finalizar Pedido</button>
+                    <a asp-controller="Login" asp-action="Index" class="btn btn-lg btn-block btn-round btn-d">Finalizar Pedido</a>@*<button class="btn btn-lg btn-block btn-round btn-d" type="submit">Finalizar Pedido</button>*@
                 </div>
             </div>
         </div>

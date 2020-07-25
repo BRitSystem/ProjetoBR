@@ -74,7 +74,7 @@ namespace WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Pesquisar/{id:int}")]
-        public ActionResult GetById(int id)
+        public ActionResult GetById(int id, string organizacao)
         {
             try
             {
