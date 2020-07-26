@@ -34,19 +34,19 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "select id, username, password, role from usuarios where username = @username and password = @password";
-                        command.Parameters.AddWithValue("username", username);
-                        command.Parameters.AddWithValue("password", password);
+                        command.CommandText = "select USU_ID, USU_USERNAME, USU_PASSWORD, Role from Usuarios where USU_USERNAME = @username and USU_PASSWORD = @password";
+                        command.Parameters.AddWithValue("USU_USERNAME", username);
+                        command.Parameters.AddWithValue("USU_PASSWORD", password);
 
                         SqlDataReader reader = command.ExecuteReader();                                                
                         while (reader.Read())
                         {
                             usuario = new Usuario()
                             {
-                                Username = reader["username"] == DBNull.Value ? string.Empty : reader["Username"].ToString(),
-                                Role = reader["role"] == DBNull.Value ? string.Empty : reader["Role"].ToString(),
-                                Password = reader["password"] == DBNull.Value ? string.Empty : reader["Password"].ToString(),
-                                Id = reader["id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["id"]),
+                                Username = reader["USU_USERNAME"] == DBNull.Value ? string.Empty : reader["USU_USERNAME"].ToString(),
+                                Role = reader["Role"] == DBNull.Value ? string.Empty : reader["Role"].ToString(),
+                                Password = reader["USU_PASSWORD"] == DBNull.Value ? string.Empty : reader["USU_PASSWORD"].ToString(),
+                                Id = reader["USU_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["USU_ID"]),
                             };
                         }
                                                 
