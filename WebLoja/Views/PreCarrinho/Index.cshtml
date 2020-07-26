@@ -1,0 +1,70 @@
+﻿@model WebLoja.Models.Produto
+@{
+    ViewData["Title"] = "Detalhes";
+}
+<link href="~/assets/css/jquery.mb.YTPlayer.min.css" />
+<section class="home-section bg-dark-30" id="home" data-background="https://image.freepik.com/free-photo/black-metal-background-texture_88281-3955.jpg">
+    <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=LCmsrVOXzZc', containment:'.home-section', startAt:56, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0}"></div>
+    <div class="video-controls-box">
+        <div class="container">
+            <div class="video-controls">@*<a class="fa fa-volume-up" id="video-volume" href="#">&nbsp;</a><a class="fa fa-pause" id="video-play" href="#">&nbsp;</a>*@</div>
+        </div>
+    </div>
+    <div class="titan-caption">
+        <div class="caption-content">
+            <div class="font-alt mb-30 titan-title-size-1">Hello &amp; welcome</div>
+            <div class="font-alt mb-40 titan-title-size-4">We are Titan</div><a class="section-scroll btn btn-border-w btn-round" href="#about">Learn More</a>
+        </div>
+    </div>
+</section>
+<section class="module-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 mb-sm-40">
+                <a class="gallery" href="@Model.ProdutoFoto"><img src="@Model.ProdutoFoto" alt="Single Product Image" /></a>
+                @*<ul class="product-gallery">
+                        <li><a class="gallery" href="~/assets/images/shop/product-8.jpg"></a><img src="~/assets/images/shop/product-8.jpg" alt="Single Product" /></li>
+                        <li><a class="gallery" href="~/assets/images/shop/product-9.jpg"></a><img src="~/assets/images/shop/product-9.jpg" alt="Single Product" /></li>
+                        <li><a class="gallery" href="~/assets/images/shop/product-10.jpg"></a><img src="~/assets/images/shop/product-10.jpg" alt="Single Product" /></li>
+                    </ul>*@
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1 class="product-title font-alt">@Model.ProdutoNome</h1>
+                    </div>
+                </div>
+                @*<div class="row mb-20">
+                    <div class="col-sm-12">
+                        <span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span><a class="open-tab section-scroll" href="#reviews">-2customer reviews</a>
+                    </div>
+                </div>*@
+                <div class="row mb-20">
+                    <div class="col-sm-12">
+                        <div class="price font-alt"><span class="amount">R$ @Model.ProdutoValor</span></div>
+                    </div>
+                </div>                
+                <div class="row mb-20">
+                    <div class="col-sm-12">
+                        <div class="description">
+                            <p>The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-20">
+                    @*<div class="col-sm-4 mb-sm-20">
+                        <input class="form-control input-lg" type="number" name="" value="1" max="40" min="1" required="required" />
+                    </div>*@
+                    <div class="col-sm-6"><a asp-controller="Carrinho" asp-action="Index" asp-route-id="@Model.ProdutoId" class="btn btn-lg btn-block btn-round btn-b">Adicionar ao Carrinho</a></div>
+                </div>
+                @*<div class="row mb-20">
+            <div class="col-sm-12">
+                <div class="product_meta">
+                    Categories:<a href="#"> Man, </a><a href="#">Clothing, </a><a href="#">T-shirts</a>
+                </div>
+            </div>
+        </div>*@
+            </div>
+        </div>
+    </div>
+</section>

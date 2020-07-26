@@ -1,127 +1,127 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Azzara Bootstrap 4 Admin Dashboard</title>
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="~/Content/assets/img/icon.ico" type="image/x-icon" />
+    <title>RB 360 - Painel Administrativo</title>
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/18.2.44/bootstrap.css" />
-
     <script src="https://cdn.syncfusion.com/ej2/18.2.44/dist/ej2.min.js"></script>
-    <!-- Fonts and icons -->
-    <script src="~/Content/assets/js/plugin/webfont/webfont.min.js"></script>
+    <link href="~/Content/css/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/Content/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
     <script>
-        WebFont.load({
-            google: { "families": ["Open+Sans:300,400,600,700"] },
-            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"], urls: ['../Content/assets/css/fonts.css'] },
-            active: function () {
-                sessionStorage.fonts = true;
-            }
-        });
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                      https://code.google.com/p/chromium/issues/detail?id=332189
+        */
     </script>
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/azzara.min.css">
-
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="~/Content/assets/css/demo.css">
 </head>
 <body>
-    <div class="wrapper">
-        <!--
-            Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
-        -->
-        <div class="main-header" data-background-color="purple">
-            <!-- Logo Header -->
-            <div class="logo-header">
-
-                <a href="index.html" class="logo">
-                    <img src="~/Content/assets/img/logoazzara.svg" alt="navbar brand" class="navbar-brand">
-                </a>
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-                        <i class="fa fa-bars"></i>
-                    </span>
-                </button>
-                <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
-                <div class="navbar-minimize">
-                    <button class="btn btn-minimize btn-rounded">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- End Logo Header -->
-            <!-- Navbar Header -->
-            @Html.Partial("_Navbar")
-            <!-- End Navbar -->
-        </div>
-
-        <!-- Sidebar -->
-
-        @Html.Partial("_Sidebar")
-        <!-- End Sidebar -->
-
-        <div class="main-panel">
-            <div class="content">
-                @RenderBody()
-            </div>
-
-        </div>
-        @Html.Partial("_Configurationbar")
+    <div class="logo">
+        <h4><a href="index.html"><strong>RB 365</strong> - Painel Administrativo</a></h4>
     </div>
-    @*</div>*@
+    <!--SIDEBAR-->
+    @Html.Partial("_Sidebar")
+    <div class="wrap">
+        <header class="page-header">
+            <!--NAVBAR-->
+            @Html.Partial("_Navbar")
+        </header>
+        <div class="content container">
+            @RenderBody()
+        </div>
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+    </div>
+    <!-- common libraries. required for every page-->
+    <script src="~/Content/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/lib/jquery-pjax/jquery.pjax.js"></script>
+    <script src="~/Content/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="~/Content/lib/widgster/widgster.js"></script>
+    <script src="~/Content/lib/underscore/underscore.js"></script>
 
-    <!--   Core JS Files   -->
-    <script src="~/Content/assets/js/core/jquery.3.2.1.min.js"></script>
-    <script src="~/Content/assets/js/core/popper.min.js"></script>
-    <script src="~/Content/assets/js/core/bootstrap.min.js"></script>
+    <!-- common application js -->
+    <script src="~/Content/js/app.js"></script>
+    <script src="~/Content/js/settings.js"></script>
 
-    <!-- jQuery UI -->
-    <script src="~/Content/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="~/Content/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <!-- common templates -->
+    <script type="text/template" id="settings-template">
+        <div class="setting clearfix">
+            <div>Sidebar on the</div>
+            <div id="sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% onRight = sidebar == 'right'%>
+                <button type="button" data-value="left" class="btn btn-sm btn-default <%= onRight? '' : 'active' %>">Left</button>
+                <button type="button" data-value="right" class="btn btn-sm btn-default <%= onRight? 'active' : '' %>">Right</button>
+            </div>
+        </div>
+        <div class="setting clearfix">
+            <div>Sidebar</div>
+            <div id="display-sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% display = displaySidebar%>
+                <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Show</button>
+                <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Hide</button>
+            </div>
+        </div>
+    </script>
 
-    <!-- jQuery Scrollbar -->
-    <script src="~/Content/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script type="text/template" id="sidebar-settings-template">
+        <% auto = sidebarState == 'auto'%>
+        <% if (auto) {%>
+        <button type="button"
+                data-value="icons"
+                class="btn-icons btn btn-transparent btn-sm">
+            Icons
+        </button>
+        <button type="button"
+                data-value="auto"
+                class="btn-auto btn btn-transparent btn-sm">
+            Auto
+        </button>
+        <%} else {%>
+        <button type="button"
+                data-value="auto"
+                class="btn btn-transparent btn-sm">
+            Auto
+        </button>
+        <% } %>
+    </script>
 
-    <!-- Moment JS -->
-    <script src="~/Content/assets/js/plugin/moment/moment.min.js"></script>
+    <!-- page specific scripts -->
+    <!-- page libs -->
+    <script src="~/Content/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/lib/jquery.sparkline/index.js"></script>
 
-    <!-- Chart JS -->
-    <script src="~/Content/assets/js/plugin/chart.js/chart.min.js"></script>
+    <script src="~/Content/lib/backbone/backbone.js"></script>
+    <script src="~/Content/lib/backbone.localStorage/build/backbone.localStorage.min.js"></script>
 
-    <!-- jQuery Sparkline -->
-    <script src="~/Content/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/Content/lib/d3/d3.min.js"></script>
+    <script src="~/Content/lib/nvd3/build/nv.d3.min.js"></script>
 
-    <!-- Chart Circle -->
-    <script src="~/Content/assets/js/plugin/chart-circle/circles.min.js"></script>
+    <!-- page application js -->
+    <script src="~/Content/js/index.js"></script>
+    <script src="~/Content/js/chat.js"></script>
 
-    <!-- Datatables -->
-    <script src="~/Content/assets/js/plugin/datatables/datatables.min.js"></script>
-
-    <!-- Bootstrap Notify -->
-    <script src="~/Content/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-
-    <!-- Bootstrap Toggle -->
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
-
-    <!-- jQuery Vector Maps -->
-    <script src="~/Content/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/Content/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
-
-    <!-- Google Maps Plugin -->
-    <script src="~/Content/assets/js/plugin/gmaps/gmaps.js"></script>
-
-    <!-- Sweet Alert -->
-    <script src="~/Content/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-
-    <!-- Azzara JS -->
-    <script src="~/Content/assets/js/ready.min.js"></script>
-
-    <!-- Azzara DEMO methods, don't include it in your project! -->
-    <script src="~/Content/assets/js/setting-demo.js"></script>
+    <!-- page template -->
+    <script type="text/template" id="message-template">
+        <div class="sender pull-left">
+            <div class="icon">
+                <img src="~/Content/img/2.png" class="img-circle" alt="">
+            </div>
+            <div class="time">
+                just now
+            </div>
+        </div>
+        <div class="chat-message-body">
+            <span class="arrow"></span>
+            <div class="sender"><a href="#">Tikhon Laninga</a></div>
+            <div class="text">
+                <%- text %>
+            </div>
+        </div>
+    </script>
     <ejs-scripts></ejs-scripts>
     @RenderSection("Scripts", required: false)
-    @*<script src="~/Content/assets/js/demo.js"></script>*@
 </body>
 </html>

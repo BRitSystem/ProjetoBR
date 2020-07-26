@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{F80F55A1-B3DD-495F-B30D-C55C1DE41B68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdmin", "WebAdmin\WebAdmin.csproj", "{EFC6A35C-5280-4E14-A3A5-B7ED6897659E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAdmin", "WebAdmin\WebAdmin.csproj", "{EFC6A35C-5280-4E14-A3A5-B7ED6897659E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebLoja", "WebLoja\WebLoja.csproj", "{A6112A08-D504-443F-8927-2DCCF4634E9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EFC6A35C-5280-4E14-A3A5-B7ED6897659E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFC6A35C-5280-4E14-A3A5-B7ED6897659E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFC6A35C-5280-4E14-A3A5-B7ED6897659E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

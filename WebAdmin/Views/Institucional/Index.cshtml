@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Institucional";
+}
+<h2 class="page-title">Personalizações <small>do Site</small></h2>
+<div class="row">
+    <section class="widget">
+        <div class="widget-body" style="padding: 0px 0px 50px 0px">
+            <form asp-controller="Institucional" asp-action="UpdateInstitucional">
+                    <div class="form-group">
+                        <label for="inputTitulo">Título</label>
+                        <input type="text" class="form-control" id="txtTitulo" name="titulo" placeholder="Informe o título do site">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescricao">Descrição</label>
+                        <input type="text" class="form-control" id="txtDescricao" name="descricao" placeholder="Informe a descrição do site">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputConteudo">Conteúdo do Site</label>
+                        <ejs-richtexteditor id="mytextarea">
+                            <e-content-template>                                
+                            </e-content-template>
+                        </ejs-richtexteditor>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputpicture">Layouts de Sites</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <img src="~/imgs/no-img.jpg" class="img-thumbnail" height="100" width="100">
+                        </div>
+                        <div class="col-md-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <img src="~/imgs/no-img.jpg" class="img-thumbnail" height="100" width="100">
+                        </div>
+                        <div class="col-md-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <img src="~/imgs/no-img.jpg" class="img-thumbnail" height="100" width="100">
+                        </div>
+                        <div class="col-md-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                            <img src="~/imgs/no-img.jpg" class="img-thumbnail" height="100" width="100">
+                        </div>
+                        <div class="col-md-2">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                            <img src="~/imgs/no-img.jpg" class="img-thumbnail" height="100" width="100">
+                        </div>
+                    </div>
+                    <input type="submit" value="Salvar" id="Submit" class="btn btn-primary" />                
+            </form>
+        </div>
+    </section>
+</div>
+

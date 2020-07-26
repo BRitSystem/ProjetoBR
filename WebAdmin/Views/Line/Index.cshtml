@@ -1,5 +1,19 @@
 ﻿@{
     ViewData["Title"] = "Line Page";
+    var url = ViewBag.url;
 }
 
-    <ej-date-picker id="datepicker" value="@DateTime.Now"></ej-date-picker>
+<span hidden>@url</span>
+<iframe src="/Home/Link"></iframe>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("iframe").load(function () {
+                $("iframe").contents().find("#btn").click(function () {
+                    $("iframe").prop("src", $("span").text());
+                });
+            });
+        });
+    </script>
+}

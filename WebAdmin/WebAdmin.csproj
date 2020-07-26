@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
     <PackageReference Include="Syncfusion.EJ.AspNet.Core" Version="18.2.0.44" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="18.2.0.44" />
   </ItemGroup>

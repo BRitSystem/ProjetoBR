@@ -1,70 +1,121 @@
 ﻿@{
     Layout = "";
 }
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Login Page</title>
-    <!--Made with love by Mutiullah Samim -->
-    <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>RB 360</title>
 
-    <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <!--Custom styles-->
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <link href="~/Content/css/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/Content/img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <script>/* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                      https://code.google.com/p/chromium/issues/detail?id=332189
+        */</script>
 </head>
 <body>
-    <div class="container">
-        <div class="d-flex justify-content-center h-100">
-            <div class="card">
-                <div class="card-header">
-                    <h3>RB 360</h3>
-                    <div class="d-flex justify-content-end social_icon">
-                        <span><i class="fab fa-facebook-square"></i></span>
-                        <span><i class="fab fa-google-plus-square"></i></span>
-                        <span><i class="fab fa-twitter-square"></i></span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+    <div class="single-widget-container">
+        <section class="widget login-widget">
+            <header class="text-align-center">
+                <h4>Login do RB 360</h4>
+            </header>
+            <div class="body">
+                <form class="no-margin"
+                      action="index.html" method="get">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input id="email" type="email" class="form-control input-lg input-transparent"
+                                       placeholder="Your Email">
                             </div>
-                            <input type="text" class="form-control" placeholder="username">
-
-                        </div>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="password">
-                        </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">Remember Me
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                            <label for="password">Password</label>
+
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input id="password" type="password" class="form-control input-lg input-transparent"
+                                       placeholder="Your Password">
+                            </div>
                         </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
-                        Don't have an account?<a href="#">Sign Up</a>
+                    </fieldset>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-block btn-lg btn-danger">
+                            <span class="small-circle"><i class="fa fa-caret-right"></i></span>
+                            <small>Sign In</small>
+                        </button>
+                        <a class="forgot" href="home">Forgot Username or Password?</a>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <a href="#">Forgot your password?</a>
-                    </div>
+                </form>
+            </div>
+            <footer>
+                <div class="facebook-login">
+                    <a href="index.html"><span><i class="fa fa-facebook-square fa-lg"></i> LogIn with Facebook</span></a>
                 </div>
+            </footer>
+        </section>
+    </div>
+    <!-- common libraries. required for every page-->
+    <script src="~Content/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~Content/lib/jquery-pjax/jquery.pjax.js"></script>
+    <script src="~Content/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="~Content/lib/widgster/widgster.js"></script>
+    <script src="~Content/lib/underscore/underscore.js"></script>
+
+    <!-- common application js -->
+    <script src="~Content/js/app.js"></script>
+    <script src="~Content/js/settings.js"></script>
+
+    <!-- common templates -->
+    <script type="text/template" id="settings-template">
+        <div class="setting clearfix">
+            <div>Sidebar on the</div>
+            <div id="sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% onRight = sidebar == 'right'%>
+                <button type="button" data-value="left" class="btn btn-sm btn-default <%= onRight? '' : 'active' %>">Left</button>
+                <button type="button" data-value="right" class="btn btn-sm btn-default <%= onRight? 'active' : '' %>">Right</button>
             </div>
         </div>
-    </div>
+        <div class="setting clearfix">
+            <div>Sidebar</div>
+            <div id="display-sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% display = displaySidebar%>
+                <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Show</button>
+                <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Hide</button>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="sidebar-settings-template">
+        <% auto = sidebarState == 'auto'%>
+        <% if (auto) {%>
+        <button type="button"
+                data-value="icons"
+                class="btn-icons btn btn-transparent btn-sm">
+            Icons
+        </button>
+        <button type="button"
+                data-value="auto"
+                class="btn-auto btn btn-transparent btn-sm">
+            Auto
+        </button>
+        <%} else {%>
+        <button type="button"
+                data-value="auto"
+                class="btn btn-transparent btn-sm">
+            Auto
+        </button>
+        <% } %>
+    </script>
 </body>
 </html>
