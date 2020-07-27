@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Web.Administration;
 using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
-    [Authorize]
-    public class ClientesController : ControllerBase
+    public class MembrosController : ControllerBase
     {
         /// <summary>
         /// Metodo para consultar a lista de cliente
@@ -29,7 +23,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                List<Cliente> lstClientes = new List<Cliente>();
+                List<Membros> LstMembros = new List<Membros>();
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -38,28 +32,31 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "select id, nome, data_nascimento, email from clientes";
+                        command.CommandText = "select MEMB_ID, MEMB_NOME,MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO from MEMBROS";
 
                         SqlDataReader reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            Cliente cliente = new Cliente()
+                            Membros membro = new Membros()
                             {
-                                Id = reader["id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["id"]),
-                                Nome = reader["nome"] == DBNull.Value ? string.Empty : reader["nome"].ToString(),
-                                DataNascimento = reader["data_nascimento"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["data_nascimento"]),
-                                Email = reader["email"] == DBNull.Value ? string.Empty : reader["email"].ToString()
+                                Id = reader["MEMB_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["MEMB_ID"]),
+                                Nome = reader["MEMB_NOME"] == DBNull.Value ? string.Empty : reader["MEMB_NOME"].ToString(),
+                                CPF = reader["MEMB_CPF"] == DBNull.Value ? string.Empty : reader["MEMB_CPF"].ToString(),
+                                Endereco = reader["MEMB_ENDERECO"] == DBNull.Value ? string.Empty : reader["MEMB_ENDERECO"].ToString(),
+                                Dtnascimento = reader["MEMB_DTNASCIMENTO"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["MEMB_DTNASCIMENTO"]),
+                                Email = reader["MEMB_EMAIL"] == DBNull.Value ? string.Empty : reader["MEMB_EMAIL"].ToString(),
+                                Foto = reader["MEMB_FOTO"] == DBNull.Value ? string.Empty :reader["MEMB_FOTO"].ToString()
                             };
 
-                            lstClientes.Add(cliente);
+                            LstMembros.Add(membro);
                         }
                     }
 
                     connection.Close();
                 }
 
-                return StatusCode(200, lstClientes.ToArray());
+                return StatusCode(200, LstMembros.ToArray());
             }
             catch (Exception ex)
             {
@@ -74,11 +71,11 @@ namespace WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Pesquisar/{id:int}")]
-        public ActionResult GetById(int id, string organizacao)
+        public ActionResult GetById(int id)
         {
             try
             {
-                Cliente cliente = null;
+                Membros membro = null;
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -87,19 +84,22 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "select id, nome, data_nascimento, email from clientes where id = @id";
+                        command.CommandText = "select MEMB_ID, MEMB_NOME,MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO from MEMBROS";
                         command.Parameters.AddWithValue("id", id);
 
                         SqlDataReader reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            cliente = new Cliente()
+                            membro = new Membros()
                             {
-                                Id = reader["id"] == DBNull.Value ? 0 : Convert.ToInt32(reader["id"]),
-                                Nome = reader["nome"] == DBNull.Value ? string.Empty : reader["nome"].ToString(),
-                                DataNascimento = reader["data_nascimento"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["data_nascimento"]),
-                                Email = reader["email"] == DBNull.Value ? string.Empty : reader["email"].ToString()
+                                Id = reader["MEMB_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["MEMB_ID"]),
+                                Nome = reader["MEMB_NOME"] == DBNull.Value ? string.Empty : reader["MEMB_NOME"].ToString(),
+                                CPF = reader["MEMB_CPF"] == DBNull.Value ? string.Empty : reader["MEMB_CPF"].ToString(),
+                                Endereco = reader["MEMB_ENDERECO"] == DBNull.Value ? string.Empty : reader["MEMB_ENDERECO"].ToString(),
+                                Dtnascimento = reader["MEMB_DTNASCIMENTO"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["MEMB_DTNASCIMENTO"]),
+                                Email = reader["MEMB_EMAIL"] == DBNull.Value ? string.Empty : reader["MEMB_EMAIL"].ToString(),
+                                Foto = reader["MEMB_FOTO"] == DBNull.Value ? string.Empty : reader["MEMB_FOTO"].ToString()
                             };
                         }
                     }
@@ -107,7 +107,7 @@ namespace WebApi.Controllers
                     connection.Close();
                 }
 
-                return StatusCode(200, cliente);
+                return StatusCode(200, membro);
             }
             catch (Exception ex)
             {
@@ -135,8 +135,8 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "delete from clientes where id = @id";
-                        command.Parameters.AddWithValue("id", id);
+                        command.CommandText = "delete from MEMBROS where MEMB_ID = @id";
+                        command.Parameters.AddWithValue("MEMB_ID", id);
 
                         int i = command.ExecuteNonQuery();
                         resultado = i > 0;
@@ -156,17 +156,17 @@ namespace WebApi.Controllers
         /// <summary>
         /// Metodo para cadastrar um novo cliente
         /// </summary>
-        /// <param name="cliente"></param>
+        /// <param name="membro"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("Novo")]
-        public ActionResult Post(Cliente cliente)
+        public ActionResult Post(Membros membro)
         {
             try
             {
                 bool resultado = false;
 
-                if (cliente == null) throw new ArgumentNullException("cliente");
+                if (membro == null) throw new ArgumentNullException("MEMBROS");
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -175,11 +175,14 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "insert into clientes(nome, data_nascimento, email) values(@nome, @data_nascimento, @email)";
+                        command.CommandText = "insert into MEMBROS(MEMB_NOME, MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO) values(@nome, @cpf, @endereco, @data_nascimento, @email, @foto)";
 
-                        command.Parameters.AddWithValue("nome", cliente.Nome);
-                        command.Parameters.AddWithValue("data_nascimento", cliente.DataNascimento);
-                        command.Parameters.AddWithValue("email", cliente.Email);
+                        command.Parameters.AddWithValue("nome", membro.Nome);
+                        command.Parameters.AddWithValue("cpf", membro.CPF);
+                        command.Parameters.AddWithValue("endereco", membro.Endereco);
+                        command.Parameters.AddWithValue("data_nascimento", membro.Dtnascimento);
+                        command.Parameters.AddWithValue("email", membro.Email);
+                        command.Parameters.AddWithValue("foto", membro.Foto);
 
                         int i = command.ExecuteNonQuery();
                         resultado = i > 0;
@@ -200,17 +203,17 @@ namespace WebApi.Controllers
         /// Metodo para atualizar os dados de um determinado cliente
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="cliente"></param>
+        /// <param name="membro"></param>
         /// <returns></returns>
         [HttpPut]
         [Route("Atualizar/{id:int}")]
-        public ActionResult Put(int id, Cliente cliente)
+        public ActionResult Put(int id, Membros membro)
         {
             try
             {
                 bool resultado = false;
 
-                if (cliente == null) throw new ArgumentNullException("cliente");
+                if (membro == null) throw new ArgumentNullException("cliente");
                 if (id == 0) throw new ArgumentNullException("id");
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
@@ -220,12 +223,15 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "update clientes set nome = @nome, data_nascimento = @data_nascimento, email = @email where id = @id";
-
+                        command.CommandText = "update clientes set MEMB_NOME = @nome, MEMB_CPF = @cpf, MEMB_ENDERECO = @endereco, MEMB_DTNASCIMENTO = @data_nascimento, MEMB_EMAIL = @email, MEMB_FOTO = @foto where MEMB_ID = @id";
+                        //MEMB_NOME, MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO
                         command.Parameters.AddWithValue("id", id);
-                        command.Parameters.AddWithValue("nome", cliente.Nome);
-                        command.Parameters.AddWithValue("data_nascimento", cliente.DataNascimento);
-                        command.Parameters.AddWithValue("email", cliente.Email);
+                        command.Parameters.AddWithValue("nome", membro.Nome);
+                        command.Parameters.AddWithValue("cpf", membro.CPF);
+                        command.Parameters.AddWithValue("endereco", membro.Endereco);
+                        command.Parameters.AddWithValue("data_nascimento", membro.Dtnascimento);
+                        command.Parameters.AddWithValue("email", membro.Email);
+                        command.Parameters.AddWithValue("foto", membro.Foto);
 
                         int i = command.ExecuteNonQuery();
                         resultado = i > 0;
@@ -238,7 +244,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(400, ex.Message); 
+                return StatusCode(400, ex.Message);
             }
         }
     }
