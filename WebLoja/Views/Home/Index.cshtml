@@ -5,7 +5,7 @@
 }
 <link href="~/assets/css/jquery.mb.YTPlayer.min.css" />
 <section class="home-section bg-dark-30" id="home" data-background="https://image.freepik.com/free-photo/black-metal-background-texture_88281-3955.jpg">
-    <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=LCmsrVOXzZc', containment:'.home-section', startAt:56, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0}"></div>
+    <div class="video-player" data-property="{videoURL:'tFZTmMluU3I',containment:'.home-section', showControls:false, autoPlay:true, loop:true, vol:50, mute:true, startAt:10,  stopAt:30, opacity:1, addRaster:false, quality:'large', optimizeDisplay:true}"></div>
     <div class="video-controls-box">
         <div class="container">
             <div class="video-controls">@*<a class="fa fa-volume-up" id="video-volume" href="#">&nbsp;</a><a class="fa fa-pause" id="video-play" href="#">&nbsp;</a>*@</div>
@@ -19,7 +19,7 @@
     </div>
 </section>
 <form>
-    <section class="module-small bg-dark">
+    @*<section class="module-small bg-dark">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
@@ -58,13 +58,74 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
     <hr class="divider-w">
+
+    <nav class="navbar navbar-main navbar-default" role="navigation" style="opacity: 1;">
+        
+        <div class="container">
+            <!-- Brand and toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links,  -->
+            <div class="collapse navbar-collapse navbar-1" style="margin-top: 0px;">
+                <link rel="stylesheet" href="~/assets/css/NavBarCustom.css" />
+                <ul class="nav navbar-nav">
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="" data-close-others="false">Todos Departamentos</a></li>
+
+                    <li class="dropdown megaDropMenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Tintas <i class="fa fa-angle-down ml-5"></i></a>
+                        <ul class="dropdown-menu row">
+                            <li class="col-sm-3 col-xs-12">
+                                <ul class="list-unstyled">
+                                    <li>Products Grid View</li>
+                                    <li><a href="#">Products</a></li>
+                                    <li><a href="#">Sidebar Left</a></li>
+                                    <li><a href="#">Products Left</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3 col-xs-12">
+                                <ul class="list-unstyled">
+                                    <li>Products List View</li>
+                                    <li><a href="#"> Sidebar Left</a></li>
+                                    <li><a href="#">Products Left</a></li>
+                                    <li><a href="#">Products Sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3 col-xs-12">
+                                <ul class="list-unstyled">
+                                    <li>Checkout</li>
+                                    <li><a href="#">Step 1</a></li>
+                                    <li><a href="#">Step 2</a></li>
+                                    <li><a href="#">Step 3</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3 col-xs-12">
+                                <ul class="list-unstyled">
+                                    <li>Sumit Kumar</li>
+                                </ul>
+                                <img src="~/assets/images/tintas_home_2020.jpg" class="img-responsive" alt="menu-img">
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+
     <section class="module-small">
         <div class="container">
             <div class="row multi-columns-row">
                 @foreach (var produto in Model)
-                {                    
+                {
                     <div class="col-sm-6 col-md-3 col-lg-3">
                         <div class="shop-item">
                             <div class="shop-item-image">
@@ -79,8 +140,9 @@
             </div>
         </div>
     </section>
-    
-    <section class="module" data-background="~/asssets/background2.png">        
+
+
+    <section class="module" data-background="~/asssets/background2.png">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
