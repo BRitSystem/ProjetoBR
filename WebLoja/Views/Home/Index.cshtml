@@ -6,7 +6,7 @@
 <link href="~/assets/css/jquery.mb.YTPlayer.min.css" />
 <section class="home-section bg-dark-30" id="home" data-background="https://image.freepik.com/free-photo/black-metal-background-texture_88281-3955.jpg">
     <div class="video-player" data-property="{videoURL:'ZWkWH27VXWA',containment:'.home-section', showControls:false, autoPlay:true, loop:true,
-         mute:true, startAt:10, stopAt:30, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true, addFilters: {grayscale: 50,sepia: 50,opacity: 30}}"></div>
+         mute:true, startAt:10, stopAt:30, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true, @*addFilters: {grayscale: 10,sepia: 10,opacity: 30}*@}"></div>
     <div class="video-controls-box">
         <div class="container">
             <div class="video-controls">@*<a class="fa fa-volume-up" id="video-volume" href="#">&nbsp;</a><a class="fa fa-pause" id="video-play" href="#">&nbsp;</a>*@</div>
@@ -35,10 +35,42 @@
             </div>
         </div>
     </section>
-    <hr class="divider-w">
+    <hr class="divider-w">    
     <section class="module-small">
+        <link rel="stylesheet" href="~/assets/css/ModuloProdutos.css" />
         <div class="container">
             <div class="row multi-columns-row">
+                @foreach (var produto in Model)
+                {
+                    <div class="col-sm-6 col-md-3 col-lg-3">
+                        <div class="ibox">
+                            <a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId">
+                                <div class="ibox-content product-box">
+                                    <div class="product-imitation">
+                                        <img src="@produto.ProdutoFoto" alt="Accessories Pack" />
+                                    </div>
+                                    <div class="product-desc">
+                                        <span class="product-price">
+                                            @produto.ProdutoValor.ToString("C")
+                                        </span>
+                                        <small class="text-muted">Categoria: tintas</small>
+                                        <a href="#" class="product-name">@produto.ProdutoNome</a>
+
+                                        <div class="small m-t-xs">
+                                            Many desktop publishing packages and web page editors now.
+                                        </div>
+                                        <div class="m-t text-righ">
+
+                                            <a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn-xs btn-outline btn-success"><i class="fa fa-shopping-cart"></i> Comprar <i class="fa fa-long-arrow-right"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            @*<div class="row multi-columns-row">
                 @foreach (var produto in Model)
                 {
                     <div class="col-sm-6 col-md-3 col-lg-3">
@@ -52,19 +84,19 @@
                         <div style="display: flex; justify-content: center; align-items: center;"><a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn-success btn-circle" type="button"><i class="fa fa-shopping-cart"></i> Carrinho</a></div>
                     </div>
                 }
-            </div>
+            </div>*@
         </div>
     </section>
-    <section class="module" data-background="~/asssets/background2.png">
+    @*<section class="module" data-background="~/asssets/background2.png">*@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <h3 class="module-title font-alt">Categorias</h3>
-                    <div class="module-subtitle font-serif">Categorias selecionadas especialmente para você</div>
+                    @*<div class="module-subtitle font-serif">Categorias selecionadas especialmente para você</div>*@
                 </div>
             </div>
             <div class="row">
-                <div class="owl-carousel text-center" data-items="5" data-pagination="false" data-navigation="false">
+                <div class="owl-carousel text-center" data-items="5" data-pagination="false" data-navigation="false" style="padding-left: 3em; padding-bottom: 2em;">
                     <div class="owl-item">
                         <div class="col-sm-12">
                             <div class="ex-product">
@@ -108,7 +140,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    @*</section>*@
 </form>
 <script>
     $(document).ready(function () {
