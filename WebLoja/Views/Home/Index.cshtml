@@ -5,7 +5,8 @@
 }
 <link href="~/assets/css/jquery.mb.YTPlayer.min.css" />
 <section class="home-section bg-dark-30" id="home" data-background="https://image.freepik.com/free-photo/black-metal-background-texture_88281-3955.jpg">
-    <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=LCmsrVOXzZc', containment:'.home-section', startAt:56, mute:true, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0}"></div>
+    <div class="video-player" data-property="{videoURL:'ZWkWH27VXWA',containment:'.home-section', showControls:false, autoPlay:true, loop:true,
+         mute:true, startAt:10, stopAt:30, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true, @*addFilters: {grayscale: 10,sepia: 10,opacity: 30}*@}"></div>
     <div class="video-controls-box">
         <div class="container">
             <div class="video-controls">@*<a class="fa fa-volume-up" id="video-volume" href="#">&nbsp;</a><a class="fa fa-pause" id="video-play" href="#">&nbsp;</a>*@</div>
@@ -19,52 +20,59 @@
     </div>
 </section>
 <form>
-    <section class="module-small bg-dark">
+    <section class="module-small bg-dark" style="padding: 20px">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <h2 class="module-title font-alt">Conheça nossos produtos</h2>
-                    <div class="module-subtitle font-serif">Produtos exclusivos especialmente para você</div>
+                <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
+                    <div class="callout-text font-alt">
+                        <h3 class="callout-title">Conheça nossos produtos</h3>
+                        <p>Produtos exclusivos especialmente para você.</p>
+                    </div>
                 </div>
-                <div class="col-sm-4 mb-sm-20">
-                    <select class="form-control">
-                        <option selected="selected">Default Sorting</option>
-                        <option>Popular</option>
-                        <option>Latest</option>
-                        <option>Average Price</option>
-                        <option>High Price</option>
-                        <option>Low Price</option>
-                    </select>
-                </div>
-                <div class="col-sm-2 mb-sm-20">
-                    <select class="form-control">
-                        <option selected="selected">Woman</option>
-                        <option>Man</option>
-                    </select>
-                </div>
-                <div class="col-sm-3 mb-sm-20">
-                    <select class="form-control">
-                        <option selected="selected">All</option>
-                        <option>Coats</option>
-                        <option>Jackets</option>
-                        <option>Dresses</option>
-                        <option>Jumpsuits</option>
-                        <option>Tops</option>
-                        <option>Trousers</option>
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-block btn-round btn-g" type="submit">Pesquisar</button>
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <div class="callout-btn-box"><a class="btn btn-w btn-round" href="portfolio_boxed_gutter_col_3.html">Lets view portfolio</a></div>
                 </div>
             </div>
         </div>
     </section>
-    <hr class="divider-w">
+    <hr class="divider-w">    
     <section class="module-small">
+        <link rel="stylesheet" href="~/assets/css/ModuloProdutos.css" />
         <div class="container">
             <div class="row multi-columns-row">
                 @foreach (var produto in Model)
-                {                    
+                {
+                    <div class="col-sm-6 col-md-3 col-lg-3">
+                        <div class="ibox">
+                            <a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId">
+                                <div class="ibox-content product-box">
+                                    <div class="product-imitation">
+                                        <img src="@produto.ProdutoFoto" alt="Accessories Pack" />
+                                    </div>
+                                    <div class="product-desc">
+                                        <span class="product-price">
+                                            @produto.ProdutoValor.ToString("C")
+                                        </span>
+                                        <small class="text-muted">Categoria: tintas</small>
+                                        <a href="#" class="product-name">@produto.ProdutoNome</a>
+
+                                        <div class="small m-t-xs">
+                                            Many desktop publishing packages and web page editors now.
+                                        </div>
+                                        <div class="m-t text-righ">
+
+                                            <a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn-xs btn-outline btn-success"><i class="fa fa-shopping-cart"></i> Comprar <i class="fa fa-long-arrow-right"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            @*<div class="row multi-columns-row">
+                @foreach (var produto in Model)
+                {
                     <div class="col-sm-6 col-md-3 col-lg-3">
                         <div class="shop-item">
                             <div class="shop-item-image">
@@ -76,20 +84,19 @@
                         <div style="display: flex; justify-content: center; align-items: center;"><a asp-controller="PreCarrinho" asp-action="Index" asp-route-id="@produto.ProdutoId" class="btn btn-success btn-circle" type="button"><i class="fa fa-shopping-cart"></i> Carrinho</a></div>
                     </div>
                 }
-            </div>
+            </div>*@
         </div>
     </section>
-    
-    <section class="module" data-background="~/asssets/background2.png">        
+    @*<section class="module" data-background="~/asssets/background2.png">*@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <h3 class="module-title font-alt">Categorias</h3>
-                    <div class="module-subtitle font-serif">Categorias selecionadas especialmente para você</div>
+                    @*<div class="module-subtitle font-serif">Categorias selecionadas especialmente para você</div>*@
                 </div>
             </div>
             <div class="row">
-                <div class="owl-carousel text-center" data-items="5" data-pagination="false" data-navigation="false">
+                <div class="owl-carousel text-center" data-items="5" data-pagination="false" data-navigation="false" style="padding-left: 3em; padding-bottom: 2em;">
                     <div class="owl-item">
                         <div class="col-sm-12">
                             <div class="ex-product">
@@ -133,5 +140,19 @@
                 </div>
             </div>
         </div>
-    </section>
+    @*</section>*@
 </form>
+<script>
+    $(document).ready(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideDown("400");
+                $(this).toggleClass('open');
+            },
+            function () {
+                $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true, true).slideUp("400");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+</script>

@@ -26,8 +26,8 @@ namespace WebLoja
         {
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
-            services.AddSingleton<IHttpContextAccessor,
-            HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

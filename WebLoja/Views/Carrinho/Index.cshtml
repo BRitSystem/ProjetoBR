@@ -27,28 +27,31 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                @foreach (var item in Model)
-                {
-                    <table class="table table-striped table-border checkout-table">
-                        <tbody>
-                            <tr>
-                                <th class="hidden-xs"></th>
-                                <th>Produto</th>
-                                <th>Preço</th>
-                                <th>Quantidade</th>
-                                <th>Total do Item</th>
-                                <th>Remover</th>
-                            </tr>
+
+                <table class="table table-striped table-border checkout-table">
+
+                    <tbody>
+                        <tr>
+                            <th class="hidden-xs"></th>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Total do Item</th>
+                            <th>Remover</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
                             <tr>
                                 <td class="hidden-xs"><a href="#"><img src="@item.ProdutoFoto" alt="@item.ProdutoNome" /></a></td>
                                 <td>
+                                    <h5 hidden id="idp" class="idp">@item.ProdutoId</h5>
                                     <h5 class="product-title font-alt">@item.ProdutoNome</h5>
                                 </td>
                                 <td>
                                     <h5 hidden id="price" class="amount" style="font-size: 12px;">@item.ProdutoValor</h5>
                                     <h5 id="price2" class="amountview" style="font-size: 12px;">@item.ProdutoValor.ToString("C")</h5>
                                 </td>
-                                <td>                                    
+                                <td>
                                     <div class="quantity clearfix">
                                         <input type="button" value="-" class="minus" field="quantity">
                                         <input type="number" readonly="readonly" min="1" id="quantity" name="quantity" value="@item.ProdutoQuantidade" class="qty" />
@@ -56,18 +59,15 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 hidden id="total" class="total_amount1" style="font-size: 12px; width: 80px;">R$ @item.ProdutoValor</h5>
+                                    <h5 hidden id="total" class="total_amount1" style="font-size: 12px; width: 80px;">@item.ProdutoValor</h5>
                                     <h5 id="total" class="total_amount" style="font-size: 12px; width: 80px;">R$ @item.ProdutoValor</h5>
                                 </td>
                                 <td class="pr-remove" style="width: 15px"><button class="btn btn-default" type="button"><i class="fa fa-trash-o" style="font-size: 13px;"></i></button></td>
                             </tr>
-                            @{
-                                var ResultadoSubtotalItem = @item.ProdutoValor * 1;
-                                Subtotal = Subtotal + ResultadoSubtotalItem;
-                            }
-                        </tbody>
-                    </table>
-                }
+                            Subtotal += item.ProdutoValor;
+                        }                        
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="container" style="padding-top: 20px">
@@ -132,11 +132,18 @@
     function calculate(obj) {
         var price = parseFloat($(obj).parent().parent().parent().find('.amount').text().replace(',', '.')) || 0;
         var quantity = parseInt($(obj).parent().find('.qty').val());
+
+        var produtoid = $(obj).parent().parent().parent().find('.idp').text();
+
+        var produto = new ProdutoQuantidadeEValor(produtoid, quantity);
+        AJAXComunicarAlteracaoQuantidadeProduto(produto);
+
         var total = price * quantity;
+
         $(obj).parent().parent().parent().find('.total_amount1').text(total);
 
         var formatado = formata(total);
-        
+
         $(obj).parent().parent().parent().find('.total_amount').text(formatado);
         calc_total();
     }
@@ -151,8 +158,8 @@
 
     function calc_total() {
         var sum = 0;
-        $(".total_amount1").each(function () {            
-            sum += parseFloat($(this).text());
+        $(".total_amount1").each(function () {
+            sum = sum + parseFloat($(this).text());
         });
         var formatado = formata(sum);
         $('#subtotal').html(formatado);
@@ -188,74 +195,31 @@
     });
 
     function changeQuantity(num, obj) {
-        //$("#quantity").val( parseInt($("#quantity").val())+num);
         var value_to_set = parseInt($(obj).parent().find('.qty').val()) + num;
         if (value_to_set <= 0) { $(obj).parent().find('.qty').val(1); return; }
         $(obj).parent().find('.qty').val(value_to_set);
     }
-    //function quantidadeCarrinho(quantity) {
 
-    //    alert(quantity.value);
-        
-        
-    //}
-    
-    //function numberToReal(numero) {
-    //    var numero = numero.toFixed(2).split('.');
-    //    numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
-    //    return numero.join(',');
-    //}
+    function AJAXComunicarAlteracaoQuantidadeProduto(produto) {
+        $.ajax({
+            type: "GET",
+            url: "/Carrinho/AlterarQuantidade?id=" + produto.produtoId + "&quantidade=" + produto.produtoQuantidade,
+            error: function (data) {
+                //Rollback
+                //produto.quantidadeProdutoCarrinhoNova = produto.quantidadeProdutoCarrinhoAntiga;
+                //AtualizarQuantidadeEValor(produto);
+            },
+            success: function () {
+                //AJAXCalcularFrete();
+            }
+        });
+    }
 
-    //function AtualizarSubtotal() {
-    //    var Subtotal = 0;
+    class ProdutoQuantidadeEValor {
+        constructor(id, quantidade) {
+            this.produtoId = id;
+            this.produtoQuantidade = quantidade;
+        }
+    }
 
-    //    var TagsComPrice = $(".price");
-
-    //    TagsComPrice.each(function () {
-    //        var ValorReais = parseFloat($(this).text().replace("R$", "").replace(".", "").replace(" ", "").replace(",", "."));
-
-    //        Subtotal += ValorReais;
-    //    })
-    //    $(".subtotal").text(numberToReal(Subtotal));
-    //}
-
-    //function OrquestradorDeAcoesProduto(operacao, botao) {
-    //    var pai = botao.parent().parent();
-
-    //    var produtoId = pai.find(".inputProdutoId").val();
-    //    var quantidadeEstoque = parseInt(pai.find(".inputQuantidadeEstoque").val());
-    //    var valorUnitario = parseFloat(pai.find(".inputValorUnitario").val().replace(",", "."));
-
-    //    var campoQuantidadeProdutoCarrinho = pai.find(".inputQuantidadeProdutoCarrinho");
-    //    var quantidadeProdutoCarrinhoAntiga = parseInt(campoQuantidadeProdutoCarrinho.val());
-
-    //    var campoValor = botao.parent().parent().parent().parent().parent().find(".price");
-
-    //    var produto = new ProdutoQuantidadeEValor(produtoId, quantidadeEstoque, valorUnitario, quantidadeProdutoCarrinhoAntiga, 0, campoQuantidadeProdutoCarrinho, campoValor);
-
-    //    AlteracoesVisuaisProdutoCarrinho(produto, operacao);
-    //}
-
-    //function AlteracoesVisuaisProdutoCarrinho(produto, operacao) {
-    //    if (operacao == "aumentar") {
-
-    //        {
-    //            produto.quantidadeProdutoCarrinhoNova = produto.quantidadeProdutoCarrinhoAntiga + 1;
-
-    //            AtualizarQuantidadeEValor(produto);
-
-    //            //AJAXComunicarAlteracaoQuantidadeProduto(produto);
-
-    //        }
-    //    } else if (operacao == "diminuir") {
-
-    //        {
-    //            produto.quantidadeProdutoCarrinhoNova = produto.quantidadeProdutoCarrinhoAntiga - 1;
-
-    //            AtualizarQuantidadeEValor(produto);
-
-    //            //AJAXComunicarAlteracaoQuantidadeProduto(produto);
-    //        }
-    //    }
-    //}
 </script>
