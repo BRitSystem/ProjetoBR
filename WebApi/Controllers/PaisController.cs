@@ -11,7 +11,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MembrosController : ControllerBase
+    public class PaisController : ControllerBase
     {
         /// <summary>
         /// Metodo para consultar a lista de cliente
@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                List<Membros> LstMembros = new List<Membros>();
+                List<Pais> LstPais = new List<Pais>();
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -32,31 +32,27 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "select MEMB_ID, MEMB_NOME,MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO from MEMBROS";
+                        command.CommandText = "select PAIS_ID, PAIS_NOME from PAISES";
 
                         SqlDataReader reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            Membros membro = new Membros()
+                            Pais pais = new Pais()
                             {
-                                Id = reader["MEMB_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["MEMB_ID"]),
-                                Nome = reader["MEMB_NOME"] == DBNull.Value ? string.Empty : reader["MEMB_NOME"].ToString(),
-                                CPF = reader["MEMB_CPF"] == DBNull.Value ? string.Empty : reader["MEMB_CPF"].ToString(),
-                                Endereco = reader["MEMB_ENDERECO"] == DBNull.Value ? string.Empty : reader["MEMB_ENDERECO"].ToString(),
-                                Dtnascimento = reader["MEMB_DTNASCIMENTO"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["MEMB_DTNASCIMENTO"]),
-                                Email = reader["MEMB_EMAIL"] == DBNull.Value ? string.Empty : reader["MEMB_EMAIL"].ToString(),
-                                Foto = reader["MEMB_FOTO"] == DBNull.Value ? string.Empty :reader["MEMB_FOTO"].ToString()
+                                Id = reader["PAIS_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PAIS_ID"]),
+                                Nome = reader["PAIS_NOME"] == DBNull.Value ? string.Empty : reader["PAIS_NOME"].ToString(),
+
                             };
 
-                            LstMembros.Add(membro);
+                            LstPais.Add(pais);
                         }
                     }
 
                     connection.Close();
                 }
 
-                return StatusCode(200, LstMembros.ToArray());
+                return StatusCode(200, LstPais.ToArray());
             }
             catch (Exception ex)
             {
@@ -70,12 +66,12 @@ namespace WebApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Pesquisar/{MEMB_ID:int}")]
+        [Route("Pesquisar/{PAIS_ID:int}")]
         public ActionResult GetById(int id)
         {
             try
             {
-                Membros membro = null;
+                Pais pais = null;
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -84,22 +80,18 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "select MEMB_ID, MEMB_NOME,MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO from MEMBROS";
-                        command.Parameters.AddWithValue("MEMB_ID", id);
+                        command.CommandText = "select PAIS_ID, PAIS_NOME from PAISES";
+                        command.Parameters.AddWithValue("PAIS_ID", id);
 
                         SqlDataReader reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            membro = new Membros()
+                            pais = new Pais()
                             {
-                                Id = reader["MEMB_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["MEMB_ID"]),
-                                Nome = reader["MEMB_NOME"] == DBNull.Value ? string.Empty : reader["MEMB_NOME"].ToString(),
-                                CPF = reader["MEMB_CPF"] == DBNull.Value ? string.Empty : reader["MEMB_CPF"].ToString(),
-                                Endereco = reader["MEMB_ENDERECO"] == DBNull.Value ? string.Empty : reader["MEMB_ENDERECO"].ToString(),
-                                Dtnascimento = reader["MEMB_DTNASCIMENTO"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(reader["MEMB_DTNASCIMENTO"]),
-                                Email = reader["MEMB_EMAIL"] == DBNull.Value ? string.Empty : reader["MEMB_EMAIL"].ToString(),
-                                Foto = reader["MEMB_FOTO"] == DBNull.Value ? string.Empty : reader["MEMB_FOTO"].ToString()
+                                Id = reader["PAIS_ID"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PAIS_ID"]),
+                                Nome = reader["PAIS_NOME"] == DBNull.Value ? string.Empty : reader["PAIS_NOME"].ToString(),
+
                             };
                         }
                     }
@@ -107,7 +99,7 @@ namespace WebApi.Controllers
                     connection.Close();
                 }
 
-                return StatusCode(200, membro);
+                return StatusCode(200, pais);
             }
             catch (Exception ex)
             {
@@ -121,7 +113,7 @@ namespace WebApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        [Route("Deletar/{MEMB_ID:int}")]
+        [Route("Deletar/{PAIS_ID:int}")]
         public ActionResult DeleteById(int id)
         {
             try
@@ -135,8 +127,8 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "delete from MEMBROS where MEMB_ID = @id";
-                        command.Parameters.AddWithValue("MEMB_ID", id);
+                        command.CommandText = "delete from PAISES where PAIS_ID = @id";
+                        command.Parameters.AddWithValue("PAIS_ID", id);
 
                         int i = command.ExecuteNonQuery();
                         resultado = i > 0;
@@ -156,17 +148,17 @@ namespace WebApi.Controllers
         /// <summary>
         /// Metodo para cadastrar um novo cliente
         /// </summary>
-        /// <param name="membro"></param>
+        /// <param name="pais"></param>
         /// <returns></returns>
         [HttpPost]
         [Route("Novo")]
-        public ActionResult Post(Membros membro)
+        public ActionResult Post(Pais pais)
         {
             try
             {
                 bool resultado = false;
 
-                if (membro == null) throw new ArgumentNullException("MEMBROS");
+                if (pais == null) throw new ArgumentNullException("PAISES");
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -175,14 +167,10 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "insert into MEMBROS(MEMB_NOME, MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO) values(@nome, @cpf, @endereco, @data_nascimento, @email, @foto)";
+                        command.CommandText = "insert into PAISES(PAIS_NOME) values(@nome)";
 
-                        command.Parameters.AddWithValue("nome", membro.Nome);
-                        command.Parameters.AddWithValue("cpf", membro.CPF);
-                        command.Parameters.AddWithValue("endereco", membro.Endereco);
-                        command.Parameters.AddWithValue("data_nascimento", membro.Dtnascimento);
-                        command.Parameters.AddWithValue("email", membro.Email);
-                        command.Parameters.AddWithValue("foto", membro.Foto);
+                        command.Parameters.AddWithValue("nome", pais.Nome);
+
 
                         int i = command.ExecuteNonQuery();
                         resultado = i > 0;
@@ -203,18 +191,18 @@ namespace WebApi.Controllers
         /// Metodo para atualizar os dados de um determinado cliente
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="membro"></param>
+        /// <param name="pais"></param>
         /// <returns></returns>
         [HttpPut]
-        [Route("Atualizar/{MEMB_ID:int}")]
-        public ActionResult Put(int id, Membros membro)
+        [Route("Atualizar/{PAIS_ID:int}")]
+        public ActionResult Put(int id, Pais pais)
         {
             try
             {
                 bool resultado = false;
 
-                if (membro == null) throw new ArgumentNullException("cliente");
-                if (id == 0) throw new ArgumentNullException("id");
+                if (pais == null) throw new ArgumentNullException("PAISES");
+                if (id == 0) throw new ArgumentNullException("PAIS_ID");
 
                 using (SqlConnection connection = new SqlConnection(Settings.ConnectionString))
                 {
@@ -223,15 +211,10 @@ namespace WebApi.Controllers
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        command.CommandText = "update clientes set MEMB_NOME = @nome, MEMB_CPF = @cpf, MEMB_ENDERECO = @endereco, MEMB_DTNASCIMENTO = @data_nascimento, MEMB_EMAIL = @email, MEMB_FOTO = @foto where MEMB_ID = @id";
-                        //MEMB_NOME, MEMB_CPF,MEMB_ENDERECO, MEMB_DTNASCIMENTO, MEMB_EMAIL, MEMB_FOTO
-                        command.Parameters.AddWithValue("id", id);
-                        command.Parameters.AddWithValue("nome", membro.Nome);
-                        command.Parameters.AddWithValue("cpf", membro.CPF);
-                        command.Parameters.AddWithValue("endereco", membro.Endereco);
-                        command.Parameters.AddWithValue("data_nascimento", membro.Dtnascimento);
-                        command.Parameters.AddWithValue("email", membro.Email);
-                        command.Parameters.AddWithValue("foto", membro.Foto);
+                        command.CommandText = "update PAISES set PAIS_NOME = @nome where PAIS_ID = @id";
+
+                        command.Parameters.AddWithValue("nome", pais.Nome);
+
 
                         int i = command.ExecuteNonQuery();
                         resultado = i > 0;
