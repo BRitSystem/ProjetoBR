@@ -16,84 +16,84 @@ namespace WebLoja.Controllers
         {
             try
             {
-                PagarMeService.DefaultApiKey = "ak_live_ZhBo2jlFzXFGHz7qKbNEvWcyw6W2nm";
-                PagarMeService.DefaultEncryptionKey = "ek_live_mQAmnLoyo2KmTR9JV9z59P1rQXEXHJ";
-                int DaysExpire = 2;
+                //PagarMeService.DefaultApiKey = "ak_live_ZhBo2jlFzXFGHz7qKbNEvWcyw6W2nm";
+                //PagarMeService.DefaultEncryptionKey = "ek_live_mQAmnLoyo2KmTR9JV9z59P1rQXEXHJ";
+                //int DaysExpire = 2;
 
-                Transaction transaction = new Transaction();
+                //Transaction transaction = new Transaction();
 
-                transaction.Amount = 151000;
-                transaction.PaymentMethod = PaymentMethod.Boleto;
-                transaction.BoletoExpirationDate = DateTime.Now.AddDays(DaysExpire);
+                //transaction.Amount = 151000;
+                //transaction.PaymentMethod = PaymentMethod.Boleto;
+                //transaction.BoletoExpirationDate = DateTime.Now.AddDays(DaysExpire);
 
-                transaction.Customer = new Customer
-                {
-                    ExternalId = "#123456789",
-                    Name = "João das Neves",
-                    Type = CustomerType.Individual,
-                    Country = "br",
-                    Email = "joaoneves@norte.com",
-                    Documents = new[] {
-                        new Document{
-                            Type = DocumentType.Cpf,
-                            Number = Mascara.Remover("306.211.430-49")
-                        }
-                    },
-                    PhoneNumbers = new string[]
-                    {
-                        "+55" + Mascara.Remover( "11999999999" )
-                    },
-                    Birthday = "1985-01-01"
-                };
+                //transaction.Customer = new Customer
+                //{
+                //    ExternalId = "#123456789",
+                //    Name = "João das Neves",
+                //    Type = CustomerType.Individual,
+                //    Country = "br",
+                //    Email = "joaoneves@norte.com",
+                //    Documents = new[] {
+                //        new Document{
+                //            Type = DocumentType.Cpf,
+                //            Number = Mascara.Remover("306.211.430-49")
+                //        }
+                //    },
+                //    PhoneNumbers = new string[]
+                //    {
+                //        "+55" + Mascara.Remover( "11999999999" )
+                //    },
+                //    Birthday = "1985-01-01"
+                //};
 
-                var Today = DateTime.Now;
-                var fee = Convert.ToDecimal(1000);
+                //var Today = DateTime.Now;
+                //var fee = Convert.ToDecimal(1000);
 
-                transaction.Shipping = new Shipping
-                {
-                    Name = "João das Neves",
-                    Fee = Mascara.ConverterValorPagarMe(fee),
-                    DeliveryDate = "2017-12-25",
-                    Expedited = false,
-                    Address = new Address()
-                    {
-                        Country = "br",
-                        State = "SP",
-                        City = "São Paulo",
-                        Neighborhood = "Vila Carrao",
-                        Street = "Rua Lobo",
-                        StreetNumber = "999",
-                        Zipcode = Mascara.Remover("03424-030")
-                    }
-                };
+                //transaction.Shipping = new Shipping
+                //{
+                //    Name = "João das Neves",
+                //    Fee = Mascara.ConverterValorPagarMe(fee),
+                //    DeliveryDate = "2017-12-25",
+                //    Expedited = false,
+                //    Address = new Address()
+                //    {
+                //        Country = "br",
+                //        State = "SP",
+                //        City = "São Paulo",
+                //        Neighborhood = "Vila Carrao",
+                //        Street = "Rua Lobo",
+                //        StreetNumber = "999",
+                //        Zipcode = Mascara.Remover("03424-030")
+                //    }
+                //};
 
-                //Item[] itens = new Item[1];
+                ////Item[] itens = new Item[1];
 
-                var itemA = new Item()
-                {
-                    Id = "a123",
-                    Title = "Trono de Ferro",
-                    Quantity = 1,
-                    Tangible = true,
-                    UnitPrice = 120000
-                };
+                //var itemA = new Item()
+                //{
+                //    Id = "a123",
+                //    Title = "Trono de Ferro",
+                //    Quantity = 1,
+                //    Tangible = true,
+                //    UnitPrice = 120000
+                //};
 
-                var itemB = new Item()
-                {
-                    Id = "b123",
-                    Title = "Capa Negra de Inverno",
-                    Quantity = 1,
-                    Tangible = true,
-                    UnitPrice = 30000
-                };
+                //var itemB = new Item()
+                //{
+                //    Id = "b123",
+                //    Title = "Capa Negra de Inverno",
+                //    Quantity = 1,
+                //    Tangible = true,
+                //    UnitPrice = 30000
+                //};
 
-                Item[] itens = new Item[2];
-                itens[0] = itemA;
-                itens[1] = itemB;
+                //Item[] itens = new Item[2];
+                //itens[0] = itemA;
+                //itens[1] = itemB;
 
-                transaction.Item = itens;
+                //transaction.Item = itens;
 
-                transaction.Save();
+                //transaction.Save();
 
                 //transaction.Customer.Gender = Gender.Male;
 

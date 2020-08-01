@@ -148,102 +148,75 @@
                 <hr class="mb-4">
 
                 <h4 class="font-alt mb-0">Formas de Pagamento</h4>
-                <hr class="divider-d">
-                <img src="~/assets/images/bandeirasPagarMe.png" style="display: block; margin-left: auto; margin-right: auto;" />
+
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs font-alt" role="tablist">
+                        <li class="active"><a href="#support" data-toggle="tab" aria-expanded="true"><i class="fa fa-credit-card"></i>Cartão de Crédito</a></li>
+                        <li class=""><a href="#sales" data-toggle="tab" aria-expanded="false"><i class="fa fa-barcode"></i>Boleto</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="support">
+                            <img src="~/assets/images/bandeirasPagarMe.png" style="display: block; margin-left: auto; margin-right: auto;" />
+                            <form role="form" method="post">
+                                @*<div class="form-group">
+            <label>Nome do Cartão</label>
+            <input type="text" asp-for="CartaoCredito.NomeNoCartao" class="form-control" placeholder="">
+            <span asp-validation-for="CartaoCredito.NomeNoCartao"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CartaoCredito.NumeroCartao"></label>
+
+            <div class="input-group">
+                <input type="text" asp-for="CartaoCredito.NumeroCartao" class="form-control" placeholder="">
+                <div class="input-group-append">
+                    <span class="input-group-text text-muted">
+                        <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp;
+                        <i class="fab fa-cc-mastercard"></i>
+                    </span>
+                </div>
+            </div>
+            <span asp-validation-for="CartaoCredito.NumeroCartao"></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
                 <div class="form-group">
-                    <div class="d-block my-3">
-                        <div class="custom-control custom-radio">
-                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                            <label class="custom-control-label" for="credit">Cartão de Crédito</label>
+                    <label for="VecimentoMM" class="hidden-xs">Vecimento</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="MM" asp-for="CartaoCredito.VecimentoMM">
+                        <input type="number" class="form-control" placeholder="YY" asp-for="CartaoCredito.VecimentoYY">
+                    </div>
+                    <span asp-validation-for="CartaoCredito.VecimentoMM"></span>
+                    <span asp-validation-for="CartaoCredito.VecimentoYY"></span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="CartaoCredito.CodigoSeguranca" data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">Cód. segurança <i class="fa fa-question-circle"></i></label>
+                    <input type="number" class="form-control" asp-for="CartaoCredito.CodigoSeguranca">
+                    <span asp-validation-for="CartaoCredito.CodigoSeguranca"></span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="Parcelamento" data-toggle="tooltip" title="">Parcelamento <i class="fa fa-question-circle"></i></label>
+                    <select class="form-control" asp-for="Parcelamento.Numero" asp-items="ViewBag.Parcelamentos"></select>
+                    <span asp-validation-for="Parcelamento"></span>
+                </div>
+            </div>
+        </div>*@
+                                <button class="subscribe btn btn-primary btn-block" type="submit"> Confirmar  </button>
+                            </form>
                         </div>
-                        <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                            <label class="custom-control-label" for="debit">Boleto Bancário</label>
+                        <div class="tab-pane" id="sales">
+                            <img src="~/assets/images/bandeirasPagarMe.png" style="display: block; margin-left: auto; margin-right: auto;" />
+                            <p>Clique no botão para visualizar o boleto bancário.</p>
+                            <p class="text-center">
+                                <a asp-action="BoletoBancario"> <i class="fa fa-barcode"></i> Continuar </a>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-number">Número do cartão</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                            @*<div class="invalid-feedback">
-                                    Credit card number is required
-                                </div>*@<div class="invalid-feedback">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">Validade</label>
-                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                @*<div class="invalid-feedback">
-                                        Expiration date required
-                                    </div>*@<div class="invalid-feedback">
-                                </div>
-                            </div>
-                            <div class="col-md-2 mb-2">
-                                <label for="cc-expiration">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                                @*<div class="invalid-feedback">
-                                        Security code required
-                                    </div>*@<div class="invalid-feedback">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-name">Nome do titular</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                            @*<small class="text-muted">Full name as displayed on card</small>*@<small class="text-muted"></small>
-                            @*<div class="invalid-feedback">
-                                    Name on card is required
-                                </div>*@<div class="invalid-feedback">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="cc-cpfcnpj">CPF/CNPJ</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                            @*<small class="text-muted">Full name as displayed on card</small>*@<small class="text-muted"></small>
-                            @*<div class="invalid-feedback">
-                                    Name on card is required
-                                </div>*@<div class="invalid-feedback">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-                @*</form>*@
             </div>
         </div>
     </div>
 </section>
-
-@*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="~/pagjs/vendor/jquery-slim.min"><\/script>')</script>
-    <script src="~/pagjs/vendor/popper.min.js"></script>
-    <script src="~/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/pagjs/vendor/holder.min.js"></script>
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
-
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>*@
