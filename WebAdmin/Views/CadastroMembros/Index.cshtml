@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "CadastroMembros";
+}
+<h2 class="page-title">Cadastro <small>de Membros</small></h2>
+
+<div class="row">
+    <section class="widget">
+        <div class="widget-body">
+            <form>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" id="nome" name="nome" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" id="cpf" name="cpf" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Endereço</label>
+                    <input type="text" id="endereco" name="endereco" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Cidade</label>
+                    <input type="text" id="cidade" name="cidade" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Estado</label>
+                    <input type="text" id="estado" name="estado" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" id="email" name="email" class="form-control">
+                </div>
+                    <a asp-controller="CadastroMembros" asp-action="SalvarMembro" class="btn btn-primary" style="display: inline;"><i class="fa fa-floppy-o"></i> Salvar</a>
+            </form>
+        </div>
+    </section>
+</div>
