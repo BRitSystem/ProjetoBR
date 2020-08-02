@@ -18,6 +18,92 @@ namespace WebLoja.Libraries.Pagamento
             _configuration = configuration;
         }
 
+        public Transaction GerarBoleto()
+        {           
+            PagarMeService.DefaultApiKey = _configuration.GetValue<String>("Pagamento: PagarMe: ApiKey");
+            PagarMeService.DefaultEncryptionKey = _configuration.GetValue<String>("Pagamento:PagarMe:EncryptionKey");
+
+            Transaction transaction = new Transaction();
+            int DaysExpire = 2;            
+
+            transaction.Amount = 151000;
+            transaction.PaymentMethod = PaymentMethod.Boleto;
+            transaction.BoletoExpirationDate = DateTime.Now.AddDays(DaysExpire);
+
+            transaction.Customer = new Customer
+            {
+                ExternalId = "#123456789",
+                Name = "João das Neves",
+                Type = CustomerType.Individual,
+                Country = "br",
+                Email = "joaoneves@norte.com",
+                Documents = new[] {
+                new Document{
+                    Type = DocumentType.Cpf,
+                    Number = Mascara.Remover("306.211.430-49")
+                }
+            },
+                PhoneNumbers = new string[]
+                {
+                "+55" + Mascara.Remover( "11999999999" )
+                },
+                Birthday = "1985-01-01"
+            };
+
+            var Today = DateTime.Now;
+            var fee = Convert.ToDecimal(1000);
+
+            transaction.Shipping = new Shipping
+            {
+                Name = "João das Neves",
+                Fee = Mascara.ConverterValorPagarMe(fee),
+                DeliveryDate = "2017-12-25",
+                Expedited = false,
+                Address = new Address()
+                {
+                    Country = "br",
+                    State = "SP",
+                    City = "São Paulo",
+                    Neighborhood = "Vila Carrao",
+                    Street = "Rua Lobo",
+                    StreetNumber = "999",
+                    Zipcode = Mascara.Remover("03424-030")
+                }
+            };
+
+            var itemA = new Item()
+            {
+                Id = "a123",
+                Title = "Trono de Ferro",
+                Quantity = 1,
+                Tangible = true,
+                UnitPrice = 120000
+            };
+
+            var itemB = new Item()
+            {
+                Id = "b123",
+                Title = "Capa Negra de Inverno",
+                Quantity = 1,
+                Tangible = true,
+                UnitPrice = 30000
+            };
+
+            Item[] itens = new Item[2];
+            itens[0] = itemA;
+            itens[1] = itemB;
+
+            transaction.Item = itens;
+
+            transaction.Save();
+
+            //transaction.Customer.Gender = Gender.Male;
+
+            //transaction.Save();
+
+            return transaction;
+        }
+
         //public Transaction GerarBoleto(decimal valor, List<ProdutoItem> produtos, EnderecoEntrega enderecoEntrega, ValorPrazoFrete valorFrete)
         //{
         //    //Cliente cliente = _loginCliente.GetCliente();
@@ -273,22 +359,22 @@ namespace WebLoja.Libraries.Pagamento
         //    return lista;
         //}
 
-        public Transaction ObterTransacao(string transactionId)
-        {
-            PagarMeService.DefaultApiKey = _configuration.GetValue<String>("Pagamento:PagarMe:ApiKey");
+        //public Transaction ObterTransacao(string transactionId)
+        //{
+        //    PagarMeService.DefaultApiKey = _configuration.GetValue<String>("Pagamento:PagarMe:ApiKey");
 
-            return PagarMeService.GetDefaultService().Transactions.Find(transactionId);
-        }
-        public Transaction EstornoCartaoCredito(string transactionId)
-        {
-            PagarMeService.DefaultApiKey = _configuration.GetValue<String>("Pagamento:PagarMe:ApiKey");
+        //    return PagarMeService.GetDefaultService().Transactions.Find(transactionId);
+        //}
+        //public Transaction EstornoCartaoCredito(string transactionId)
+        //{
+        //    PagarMeService.DefaultApiKey = _configuration.GetValue<String>("Pagamento:PagarMe:ApiKey");
 
-            var transaction = PagarMeService.GetDefaultService().Transactions.Find(transactionId);
+        //    var transaction = PagarMeService.GetDefaultService().Transactions.Find(transactionId);
 
-            transaction.Refund();
+        //    transaction.Refund();
 
-            return transaction;
-        }
+        //    return transaction;
+        //}
 
 
         //public Transaction EstornoBoletoBancario(string transactionId, DadosCancelamentoBoleto boletoBancario)

@@ -53,104 +53,73 @@
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="font-alt mb-0">Endereço de Entrega</h4>
-                <hr class="divider-d">
-                @*<form class="needs-validation" novalidate>*@
-                <form class="form-group">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="firstName">Nome</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                            @*<div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>*@
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="lastName">Last name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                            @*<div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>*@
-                        </div>
-                    </div>
-                </form>
-                <div class="mb-3">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"></span>
-                        </div>
-                        <input type="text" class="form-control" id="username" placeholder="Username" required>
-                        @*<div class="invalid-feedback" style="width: 100%;">
-                                Your username is required.
-                            </div>*@
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                    @*<div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                        </div>*@
-                </div>
-
-                <div class="mb-3">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-                    @*<div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>*@
-                </div>
-
-                <div class="mb-3">
-                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                </div>
-
+                <hr class="mb-2">
                 <div class="row">
-                    <div class="col-md-5 mb-3">
-                        <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
-                            <option value="">Choose...</option>
-                            <option>United States</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="state">State</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                            <option value="">Choose...</option>
-                            <option>California</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please provide a valid state.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="zip">Zip</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
+                    <div class="col-sm-8">
+                        <form id="contactForm" role="form">
+                            <div class="form-group">
+                                <label>Nome do destinatário*</label>
+                                <input class="form-control" type="text" id="name" name="name" required="required" data-validation-required-message="Please enter your name." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            @*<div class="form-group">
+                                <label>Tipo de Endereço*</label>
+                                <select name="tipoend" id="tipoend" class="form-control input">
+                                    <option value="Apartamento">Apartamento</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Comercial">Comercial</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                                <p class="help-block text-danger"></p>
+                            </div>*@
+                            <div class="form-group">
+                                <label>CEP*</label>
+                                <input class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9" />                                
+                            </div>
+                            <div class="form-group">
+                                <label>Endereço*</label>
+                                <input class="form-control" name="rua" type="text" id="rua" readonly="readonly" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Número*</label>
+                                <input class="form-control" type="text" name="numero" required="required" data-validation-required-message="Please enter your name." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Complemento</label>
+                                <input class="form-control" type="text" name="complemento" required="required" data-validation-required-message="Please enter your name." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Bairro*</label>
+                                <input class="form-control" name="bairro" type="text" id="bairro" readonly="readonly" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Cidade*</label>
+                                <input class="form-control" class="form-control" type="text" id="cidade" name="cidade" readonly="readonly" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>Estado*</label>
+                                <input class="form-control" type="text" id="uf" name="uf" readonly="readonly" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-success btn-round" id="cfsubmit" type="submit">Salvar Alterações</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <hr class="mb-4">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="same-address">
-                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info">
-                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
-                </div>
-                <hr class="mb-4">
 
+
+                <hr class="mb-2">
                 <h4 class="font-alt mb-0">Formas de Pagamento</h4>
+                <hr class="mb-4">
 
                 <div role="tabpanel">
-                    <ul class="nav nav-tabs font-alt" role="tablist">
+                    <ul class="nav nav-tabs font-alt" role="tablist" style="font-size: 12px;">
                         <li class="active"><a href="#support" data-toggle="tab" aria-expanded="true"><i class="fa fa-credit-card"></i>Cartão de Crédito</a></li>
                         <li class=""><a href="#sales" data-toggle="tab" aria-expanded="false"><i class="fa fa-barcode"></i>Boleto</a></li>
                     </ul>
@@ -158,60 +127,50 @@
                         <div class="tab-pane active" id="support">
                             <img src="~/assets/images/bandeirasPagarMe.png" style="display: block; margin-left: auto; margin-right: auto;" />
                             <form role="form" method="post">
-                                @*<div class="form-group">
-            <label>Nome do Cartão</label>
-            <input type="text" asp-for="CartaoCredito.NomeNoCartao" class="form-control" placeholder="">
-            <span asp-validation-for="CartaoCredito.NomeNoCartao"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="CartaoCredito.NumeroCartao"></label>
-
-            <div class="input-group">
-                <input type="text" asp-for="CartaoCredito.NumeroCartao" class="form-control" placeholder="">
-                <div class="input-group-append">
-                    <span class="input-group-text text-muted">
-                        <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp;
-                        <i class="fab fa-cc-mastercard"></i>
-                    </span>
-                </div>
-            </div>
-            <span asp-validation-for="CartaoCredito.NumeroCartao"></span>
-        </div>
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="form-group">
-                    <label for="VecimentoMM" class="hidden-xs">Vecimento</label>
-                    <div class="input-group">
-                        <input type="number" class="form-control" placeholder="MM" asp-for="CartaoCredito.VecimentoMM">
-                        <input type="number" class="form-control" placeholder="YY" asp-for="CartaoCredito.VecimentoYY">
-                    </div>
-                    <span asp-validation-for="CartaoCredito.VecimentoMM"></span>
-                    <span asp-validation-for="CartaoCredito.VecimentoYY"></span>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label asp-for="CartaoCredito.CodigoSeguranca" data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">Cód. segurança <i class="fa fa-question-circle"></i></label>
-                    <input type="number" class="form-control" asp-for="CartaoCredito.CodigoSeguranca">
-                    <span asp-validation-for="CartaoCredito.CodigoSeguranca"></span>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label asp-for="Parcelamento" data-toggle="tooltip" title="">Parcelamento <i class="fa fa-question-circle"></i></label>
-                    <select class="form-control" asp-for="Parcelamento.Numero" asp-items="ViewBag.Parcelamentos"></select>
-                    <span asp-validation-for="Parcelamento"></span>
-                </div>
-            </div>
-        </div>*@
-                                <button class="subscribe btn btn-primary btn-block" type="submit"> Confirmar  </button>
+                                <div class="form-group">
+                                    <label>Nome do Cartão</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Número Cartão</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="VecimentoMM" class="hidden-xs">Vecimento</label>
+                                            <div class="input-group">
+                                                <input type="number" min="1" class="form-control" placeholder="MM">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="VecimentoMM" class="hidden-xs">Vecimento</label>
+                                            <div class="input-group">
+                                                <input type="number" min="20" class="form-control" placeholder="YY">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">Cód. segurança <i class="fa fa-question-circle"></i></label>
+                                            <input type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" title="">Parcelamento <i class="fa fa-question-circle"></i></label>
+                                            <select class="form-control" asp-items="ViewBag.Parcelamentos"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-block btn-round" type="submit"><i class="fa fa-credit-card"></i>Confirmar</button>
                             </form>
                         </div>
                         <div class="tab-pane" id="sales">
                             <img src="~/assets/images/bandeirasPagarMe.png" style="display: block; margin-left: auto; margin-right: auto;" />
                             <p>Clique no botão para visualizar o boleto bancário.</p>
                             <p class="text-center">
-                                <a asp-action="BoletoBancario"> <i class="fa fa-barcode"></i> Continuar </a>
+                                <a class="btn btn-success btn-block btn-round" asp-controller="Pagamento" asp-action="BoletoBancario"><i class="fa fa-barcode"></i>Gerar Boleto</a>
                             </p>
                         </div>
                     </div>
@@ -220,3 +179,82 @@
         </div>
     </div>
 </section>
+<script src="~/assets/lib/jquery/dist/jquery.js"></script>
+<script src="https://unpkg.com/vanilla-masker@1.1.1/lib/vanilla-masker.js"></script>
+<script>
+    function inputHandler(masks, max, event) {
+        var c = event.target;
+        var v = c.value.replace(/\D/g, '');
+        var m = c.value.length > max ? 1 : 0;
+        VMasker(c).unMask();
+        VMasker(c).maskPattern(masks[m]);
+        c.value = VMasker.toPattern(v, masks[m]);
+    }
+
+    var CepMask = ['99999-999', '99999-999'];
+    var Cep = document.querySelector('input[name="cep"]');
+    VMasker(Cep).maskPattern(CepMask[0]);
+    Cep.addEventListener('input', inputHandler.bind(undefined, CepMask, 9), false);
+   
+    $(document).ready(function () {
+
+        function limpa_formulário_cep() {
+            // Limpa valores do formulário de cep.
+            $("#rua").val("");
+            $("#bairro").val("");
+            $("#cidade").val("");
+            $("#uf").val("");
+        }
+
+        //Quando o campo cep perde o foco.
+        $("#cep").blur(function () {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("#rua").val("...");
+                    $("#bairro").val("...");
+                    $("#cidade").val("...");
+                    $("#uf").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("#rua").val(dados.logradouro);
+                            $("#bairro").val(dados.bairro);
+                            $("#cidade").val(dados.localidade);
+                            $("#uf").val(dados.uf);
+                        } //end if.
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        });
+    });
+
+</script>
