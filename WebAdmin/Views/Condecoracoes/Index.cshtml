@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Condecoracoes";
+}
+<h2 class="page-title">Cadastro <small>de Condecorações</small></h2>
+
+<div class="row">
+    <section class="widget">
+        <div class="widget-body">
+            <form>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" id="nome" name="nome" class="form-control">
+                </div>
+                <a asp-controller="Condecoracoes" asp-action="SalvarCondecoracoes" class="btn btn-primary" style="display: inline;"><i class="fa fa-floppy-o"></i> Salvar</a>
+            </form>
+        </div>
+    </section>
+</div>
