@@ -218,9 +218,9 @@
                     </li>
                     @*<li><a href="#">Store locator</a></li>*@
                 </ul>
-                <ul class="nav navbar-nav navbar-right" style="margin-right: 30px;">
+                @*<ul class="nav navbar-nav navbar-right" style="margin-right: 30px;">
                     <li><a href="#" style="right: 3px;"><img src="~/assets/images/grocery-cart.png" /> 0</a></li>
-                </ul>
+                </ul>*@
             </div><!-- /.nav-collapse -->
         </nav>        
         @RenderBody()
@@ -251,84 +251,6 @@
             </div>
         </div>
         <hr class="divider-d">
-        <section class="module pt-0 pb-0 parallax-bg testimonial" data-background="~/asssets/background2.png">
-            <div class="testimonials-slider pt-140 pb-140">
-                <ul class="slides">
-                    <li>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="module-icon"><span class="icon-quote" style="color:black"></span></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <blockquote class="testimonial-text font-alt" style="color:black">I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</blockquote>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-sm-offset-4">
-                                    <div class="testimonial-author">
-                                        <div class="testimonial-caption font-alt">
-                                            <div class="testimonial-title" style="color:black">Jack Woods</div>
-                                            <div class="testimonial-descr" style="color:black">SomeCompany INC, CEO</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="module-icon"><span class="icon-quote" style="color:black"></span></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <blockquote class="testimonial-text font-alt" style="color:black">I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</blockquote>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-sm-offset-4">
-                                    <div class="testimonial-author">
-                                        <div class="testimonial-caption font-alt">
-                                            <div class="testimonial-title" style="color:black">Jim Stone</div>
-                                            <div class="testimonial-descr" style="color:black">SomeCompany INC, CEO</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="module-icon"><span class="icon-quote" style="color:black"></span></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <blockquote class="testimonial-text font-alt" style="color:black">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-sm-offset-4">
-                                    <div class="testimonial-author">
-                                        <div class="testimonial-caption font-alt">
-                                            <div class="testimonial-title" style="color:black">Adele Snow</div>
-                                            <div class="testimonial-descr" style="color:black">SomeCompany INC, CEO</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
         <div class="main">
             <div class="module-small bg-dark">
                 <div class="container">
@@ -388,9 +310,6 @@
         </div>
         <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
     </main>
-    JavaScripts
-    =============================================
-    -->
     <script scr="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="~/assets/lib/jquery/dist/jquery.js"></script>
     <script src="~/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -406,5 +325,137 @@
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/main.js"></script>
     <script src="~/js/ActionsCarrinho.js"></script>
+    <script>
+        (function () {
+
+            var autoUpdate = true,
+                timeTrans = 4000;
+
+            var cdSlider = document.querySelector('.cd-slider'),
+                item = cdSlider.querySelectorAll("li"),
+                nav = cdSlider.querySelector("nav");
+
+            item[0].className = "current_slide";
+
+            for (var i = 0, len = item.length; i < len; i++) {
+                var color = item[i].getAttribute("data-color");
+                item[i].style.backgroundColor = color;
+            }
+
+            // Detect IE
+            // hide ripple effect on IE9
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE");
+            if (msie > 0) {
+                var version = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+                if (version === 9) { cdSlider.className = "cd-slider ie9"; }
+            }
+
+            if (item.length <= 1) {
+                nav.style.display = "none";
+            }
+
+            function prevSlide() {
+                var currentSlide = cdSlider.querySelector("li.current_slide"),
+                    prevElement = currentSlide.previousElementSibling,
+                    prevSlide = (prevElement !== null) ? prevElement : item[item.length - 1],
+                    prevColor = prevSlide.getAttribute("data-color"),
+                    el = document.createElement('span');
+
+                currentSlide.className = "";
+                prevSlide.className = "current_slide";
+
+                nav.children[0].appendChild(el);
+
+                var size = (cdSlider.clientWidth >= cdSlider.clientHeight) ? cdSlider.clientWidth * 2 : cdSlider.clientHeight * 2,
+                    ripple = nav.children[0].querySelector("span");
+
+                ripple.style.height = size + 'px';
+                ripple.style.width = size + 'px';
+                ripple.style.backgroundColor = prevColor;
+
+                ripple.addEventListener("webkitTransitionEnd", function () {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                    }
+                });
+
+                ripple.addEventListener("transitionend", function () {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                    }
+                });
+
+            }
+
+            function nextSlide() {
+                var currentSlide = cdSlider.querySelector("li.current_slide"),
+                    nextElement = currentSlide.nextElementSibling,
+                    nextSlide = (nextElement !== null) ? nextElement : item[0],
+                    nextColor = nextSlide.getAttribute("data-color"),
+                    el = document.createElement('span');
+
+                currentSlide.className = "";
+                nextSlide.className = "current_slide";
+
+                nav.children[1].appendChild(el);
+
+                var size = (cdSlider.clientWidth >= cdSlider.clientHeight) ? cdSlider.clientWidth * 2 : cdSlider.clientHeight * 2,
+                    ripple = nav.children[1].querySelector("span");
+
+                ripple.style.height = size + 'px';
+                ripple.style.width = size + 'px';
+                ripple.style.backgroundColor = nextColor;
+
+                ripple.addEventListener("webkitTransitionEnd", function () {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                    }
+                });
+
+                ripple.addEventListener("transitionend", function () {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                    }
+                });
+
+            }
+
+            updateNavColor();
+
+            function updateNavColor() {
+                var currentSlide = cdSlider.querySelector("li.current_slide");
+
+                var nextColor = (currentSlide.nextElementSibling !== null) ? currentSlide.nextElementSibling.getAttribute("data-color") : item[0].getAttribute("data-color");
+                var prevColor = (currentSlide.previousElementSibling !== null) ? currentSlide.previousElementSibling.getAttribute("data-color") : item[item.length - 1].getAttribute("data-color");
+
+                if (item.length > 2) {
+                    nav.querySelector(".prev").style.backgroundColor = prevColor;
+                    nav.querySelector(".next").style.backgroundColor = nextColor;
+                }
+            }
+
+            nav.querySelector(".next").addEventListener('click', function (event) {
+                event.preventDefault();
+                nextSlide();
+                updateNavColor();
+            });
+
+            nav.querySelector(".prev").addEventListener("click", function (event) {
+                event.preventDefault();
+                prevSlide();
+                updateNavColor();
+            });
+
+            //autoUpdate
+            setInterval(function () {
+                if (autoUpdate) {
+                    nextSlide();
+                    updateNavColor();
+                };
+            }, timeTrans);
+
+        })();
+    </script>
 </body>
 </html>

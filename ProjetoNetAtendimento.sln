@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAdmin", "WebAdmin\WebAdm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebLoja", "WebLoja\WebLoja.csproj", "{A6112A08-D504-443F-8927-2DCCF4634E9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCursos", "WebCursos\WebCursos.csproj", "{FD46910E-3DB2-49F7-B218-887202EC8C23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCurso", "WebCurso\WebCurso.csproj", "{0FB5496C-63AC-4844-A9FC-7C9BD5050D58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6112A08-D504-443F-8927-2DCCF4634E9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD46910E-3DB2-49F7-B218-887202EC8C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD46910E-3DB2-49F7-B218-887202EC8C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD46910E-3DB2-49F7-B218-887202EC8C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD46910E-3DB2-49F7-B218-887202EC8C23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB5496C-63AC-4844-A9FC-7C9BD5050D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB5496C-63AC-4844-A9FC-7C9BD5050D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB5496C-63AC-4844-A9FC-7C9BD5050D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB5496C-63AC-4844-A9FC-7C9BD5050D58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
