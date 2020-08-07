@@ -324,7 +324,7 @@ p.drop-caps.colored.secondary:first-child:first-letter {
 }
 /* Header */
 .header .toggle-sidebar-left {
-	background: #0088cc;
+	background: #fe0303;
 }
 /* Header Nav Menu */
 @media (min-width: 992px) {
@@ -563,7 +563,7 @@ html.dark .timeline.timeline-simple .tm-body .tm-items > li:before {
 }
 /* Accordion */
 .panel-group .panel-accordion .panel-heading a {
-	color: #0088cc;
+	color: #000000;
 }
 /* Alerts */
 .alert-primary {
@@ -631,13 +631,13 @@ html .panel-primary .panel-heading {
 }
 /* Toggle */
 .toggle label {
-	border-left-color: #0088cc;
-	color: #0088cc;
+	border-left-color: #333;
+	color: #333;
 }
 
 .toggle.active > label {
-	background: #0088cc !important;
-	border-color: #0088cc;
+	background: #333 !important;
+	border-color: #333;
 }
 /* Treeview */
 .jstree-default .jstree-hovered {
@@ -972,7 +972,7 @@ html.dark .search-content .search-toolbar .nav-pills li.active a:focus {
 * Call to Action
 */
 .call-to-action.call-to-action-primary {
-	background-color: #0088cc;
+	background-color: #333;
 }
 
 .call-to-action .call-to-action-btn .btn {

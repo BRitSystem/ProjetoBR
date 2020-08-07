@@ -1491,7 +1491,7 @@ html.fixed .visible-xl-inline-block {
 	display: inline-block;
 	height: 100%;
 	margin: 0 25px 0;
-	width: 2px;
+	width: 7px;
 	vertical-align: middle;
 }
 
@@ -1499,11 +1499,12 @@ html.fixed .visible-xl-inline-block {
 	width: 320px;
 	display: inline-block;
 	vertical-align: middle;
+	margin-top: 10px;
 }
 
 .header .toggle-sidebar-left {
 	background: #CCC;
-	border-radius: 100px;
+/*	border-radius: 100px;*/
 	color: #FFF;
 	height: 30px;
 	line-height: 30px;
@@ -6856,9 +6857,9 @@ html.dark .inner-toolbar > ul > li {
 }
 
 .call-to-action.call-to-action-top {
-	margin: -40px;
+	margin: -70px;
 	border-radius: 0;
-	padding: 40px 25px;
+	padding: 50px 0px;
 }
 
 @media (max-width: 767px) {

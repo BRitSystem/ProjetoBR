@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Lesson";
+}
+<link href="~/assets/lity/lity.css" rel="stylesheet">
+<script src="~/assets/vendor/jquery/jquery.js"></script>
+<script src="~/assets/lity/lity.js"></script>
+
+<section role="main" class="content-body">
+    <div id="everything" class="panel-body" style="background: #333; margin-bottom: 10px;">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="item">
+                    <a class="img-thumbnail" style="height: 210px; width: 320px;" href="//www.youtube.com/watch?v=w0Un_0Dqbu8" data-lity>
+                        <img src="~/assets/images/curso4.jpg" style="height: 200px; width: 310px; border-radius: 5px;" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-7 pb-lg" style="color:#ffffff;">
+                <h3>The Web Developer Bootcamp</h3>
+                <p>
+                    The only course you need to learn web development - HTML, CSS, JS, Node, and More!
+                    You may put any HTML content in each gallery item and mix content types.
+                    In this example lazy-loading of images is enabled for the next image based on move direction.
+                </p>
+                <i class="fa fa-youtube-play" style="font-size: 25px;"><span style="margin-left: 10px; font-size: 12px;">Assistir o curso</span></i>
+            </div>
+        </div>
+    </div>
+    <hr class="solid" />
+    <div style="background: #ffffff; margin: 5px; border: 1px dashed gray;">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/image/man.png" style="border-radius: 100%; margin: 5px;" />
+                <b style="margin: 10px;">Instrutor: Rafael Junqueira</b>
+            </div>
+            <div class="col-md-4">
+                <img src="~/image/clock.png" style="border-radius: 100%; margin: 5px;" />
+                <b style="margin: 10px;">Carga horária: 32 h</b>
+            </div>
+            <div class="col-md-4">
+                <img src="~/image/arrow.png" style="border-radius: 100%; margin: 5px;" />
+                <b style="margin: 10px;">Módulos: 3</b>
+            </div>
+        </div>
+    </div>
+    <hr class="solid" />
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#popular" data-toggle="tab"><i class="fa fa-youtube-play"></i> Conteúdo do curso</a>
+        </li>
+        <li>
+            <a href="#recent" data-toggle="tab"><i class="fa fa-comments-o"></i> Perguntas e respostas</a>
+        </li>
+        <li>
+            <a href="#sobre" data-toggle="tab"><i class="fa fa-quote-right"></i> Anotações</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="popular" class="tab-pane active">
+            <div class="toggle" data-plugin-toggle>
+                <section class="toggle">
+                    <label>Módulo 1 - Reconhecendo a Web</label>
+                    <div class="toggle-content">
+                        <a class="img-thumbnail" href="//www.youtube.com/watch?v=w0Un_0Dqbu8" data-lity style="border: 0px;">
+                            <i class="fa fa-youtube-play" style="font-size: 18px"><b style="font-family:'Segoe UI Historic'; font-size: 12px; margin-left: 10px">Estudo 1</b></i>
+                        </a>
+                    </div>
+                </section>
+                <section class="toggle">
+                    <label>Módulo 2 - Reconhecendo as Tecnologias</label>
+                    <div class="toggle-content">
+                        <a class="img-thumbnail" href="//www.youtube.com/watch?v=qut-3sDBCco" data-lity style="border: 0px;">
+                            <i class="fa fa-youtube-play" style="font-size: 18px"><b style="font-family:'Segoe UI Historic'; font-size: 12px; margin-left: 10px">Estudo 2</b></i>
+                        </a>
+                    </div>
+                </section>
+                <section class="toggle">
+                    <label>Módulo 3 - Tecnologias Especiais</label>
+                    <div class="toggle-content">
+                        <a class="img-thumbnail" href="//www.youtube.com/watch?v=dhcdwJT9kBo" data-lity style="border: 0px;">
+                            <i class="fa fa-youtube-play" style="font-size: 18px"><b style="font-family:'Segoe UI Historic'; font-size: 12px; margin-left: 10px">Estudo 3</b></i>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div id="recent" class="tab-pane">
+
+        </div>
+        <div id="sobre" class="tab-pane">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-group" id="accordion2">
+
+            </div>
+        </div>
+    </div>
+</section>
